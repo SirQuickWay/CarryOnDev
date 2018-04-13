@@ -10,5 +10,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         int i = 0;
+        String s = "Hello World";
     }
 }
