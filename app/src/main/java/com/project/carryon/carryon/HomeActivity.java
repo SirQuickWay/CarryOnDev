@@ -9,7 +9,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        int i = 0;
+        int i = 1;
         String s = "Hello World";
     }
 }
