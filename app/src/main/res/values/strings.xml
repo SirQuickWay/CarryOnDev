@@ -3,5 +3,18 @@
     <string name="set_email_message">Enter your e-mail</string>
     <string name="set_password_message">Password</string>
     <string name="button_login">Log In</string>
+    <string name="insert_your_details">Insert your details</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="username">Username</string>
+    <string name="sex">Sex</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="email">E-mail</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="main_address">Main Address</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>
