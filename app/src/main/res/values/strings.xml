@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CarryOn</string>
+    <string name="set_email_message">Enter your e-mail</string>
+    <string name="set_password_message">Password</string>
+    <string name="button_login">Log In</string>
+
 </resources>
