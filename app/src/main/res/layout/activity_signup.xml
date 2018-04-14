@@ -27,7 +27,7 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="200dp"
+        android:layout_width="204dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -37,7 +37,7 @@
         android:layout_marginTop="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -62,7 +62,7 @@
 
     <TextView
         android:id="@+id/editText_sex"
-        android:layout_width="50dp"
+        android:layout_width="46dp"
         android:layout_height="39dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -70,11 +70,12 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:paddingTop="4dp"
         android:text="@string/sex"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/radioGroup"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394" />
@@ -153,6 +154,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             tools:hint="@string/email"
             tools:layout_editor_absoluteX="65dp"
@@ -164,6 +166,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/phone_number"
             android:inputType="phone"
             tools:hint="@string/phone_number"
             tools:layout_editor_absoluteX="63dp"
@@ -175,6 +178,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/main_address"
             android:inputType="textPostalAddress"
             tools:hint="@string/main_address"
             tools:layout_editor_absoluteX="62dp"
@@ -186,6 +190,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/password"
             android:inputType="textPassword"
             tools:hint="@string/password"
             tools:layout_editor_absoluteX="63dp"
@@ -197,6 +202,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/repeat_password"
             android:inputType="textPassword"
             tools:hint="@string/repeat_password"
             tools:layout_editor_absoluteX="60dp"
@@ -223,4 +229,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:background="#FFD123" />
+
 </android.support.constraint.ConstraintLayout>
