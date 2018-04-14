@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CarryOn.iml" filepath="$PROJECT_DIR$/CarryOn.iml" />
-      <module fileurl="file://C:\Users\Elena\AndroidStudioProjects\CarryOnDev\CarryOn.iml" filepath="C:\Users\Elena\AndroidStudioProjects\CarryOnDev\CarryOn.iml" />
-      <module fileurl="file://C:\Users\matte\AndroidStudioProjects\CarryOn\CarryOnDev.iml" filepath="C:\Users\matte\AndroidStudioProjects\CarryOn\CarryOnDev.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Elena\AndroidStudioProjects\CarryOnDev\app\app.iml" filepath="C:\Users\Elena\AndroidStudioProjects\CarryOnDev\app\app.iml" />
     </modules>
   </component>
 </project>
