@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">CarryOn</string>
+    <string name="logo">carry on logo</string>
+    <string name="reset_password">Forgot your password?</string>
+    <string name="new_sign_up">Don\'t have an account?</string>
     <string name="set_email_message">Enter your e-mail</string>
     <string name="set_password_message">Password</string>
     <string name="button_login">Log In</string>
