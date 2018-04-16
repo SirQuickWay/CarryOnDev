@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "955421874975-633fnhfdiajq6ooccdb7q531bmm34te8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.carryon.carryon",
+            "certificate_hash": "8def6ec57de0e07c7ee7d3b2bef226eac957e51d"
+          }
+        },
+        {
           "client_id": "955421874975-vp9okk0ae6hd9imafhdklmdgfo91kdk5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
