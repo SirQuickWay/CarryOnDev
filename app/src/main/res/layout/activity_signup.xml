@@ -102,6 +102,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:buttonTint="@color/colorPrimary"
+                android:checked="true"
                 android:text="@string/male"
                 android:textSize="18sp"
                 android:visibility="visible" />
