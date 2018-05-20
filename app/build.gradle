@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.project.carryon.carryon"
-        minSdkVersion 23
+        minSdkVersion 20
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -29,5 +29,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.google.firebase:firebase-core:12.0.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }
 apply plugin: 'com.google.gms.google-services'
