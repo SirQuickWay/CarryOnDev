@@ -12,6 +12,8 @@ public class User {
     private String username;
     private String email;
 
+    //ADD: password, phoneNumber, Address
+
     public User(String UID, String name, String surname, String username, String email) {
         this.UID = UID;
         this.name = name;
