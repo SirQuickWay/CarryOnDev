@@ -48,18 +48,20 @@ public class OrdersAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = View.inflate(mContext, R.layout.order_item, null);
         TextView fromTo = v.findViewById(R.id.textView_fromTo);
-        TextView data = v.findViewById(R.id.textView_data);
+        TextView pickupDate = v.findViewById(R.id.textView_pickupDate);
+        TextView deliveryDate = v.findViewById(R.id.textView_deliveryDate);
+
         de.hdodenhof.circleimageview.CircleImageView statusView = v.findViewById(R.id.circle_status);
         if(currentUser.getUID().equals(deliveryList.get(i).getSender().getUID())) {
             fromTo.setText("To " + deliveryList.get(i).getReceiver().getName());
-            Date d = deliveryList.get(i).getPickUpDate();
-            data.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
         }
         else if(currentUser.getUID().equals(deliveryList.get(i).getReceiver().getUID())) {
             fromTo.setText("From " + deliveryList.get(i).getSender().getName());
-            Date d = deliveryList.get(i).getDeliveryDate();
-            data.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
         }
+        Date d = deliveryList.get(i).getPickUpDate();
+        pickupDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
+        d = deliveryList.get(i).getDeliveryDate();
+        deliveryDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
         switch(deliveryList.get(i).getStatus())
         {
             case 0:
