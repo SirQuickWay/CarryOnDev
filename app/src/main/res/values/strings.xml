@@ -19,5 +19,13 @@
     <string name="password">Password</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="start_address">Start Address</string>
+    <string name="end_address">End Address</string>
+    <string name="range">Range</string>
+    <string name="date_departure">Departure Date</string>
+    <string name="hour_departure">Departure Time</string>
+    <string name="time_travel">Estimated time of travel</string>
+    <string name="transport">Main Transport</string>
+    <string name="new_path">New Path</string>
 
 </resources>
