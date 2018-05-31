@@ -28,8 +28,8 @@ public class Delivery {
     //QR codes da aggiungere.
     //l'indirizzo si ricava dagli users.
 
-    public Delivery(String deliveryID, String deliveryPathID, String senderID, String receiverID, String carrierID, String creatorID, String packageContent, double packageDim1, double packageDim2, double packageDim3, double packageWeight, double price, long creationDate) {
-        this.deliveryID = deliveryID;
+    public Delivery( String deliveryPathID, String senderID, String receiverID, String carrierID, String creatorID, String packageContent, double packageDim1, double packageDim2, double packageDim3, double packageWeight, double price, long creationDate) {
+        this.deliveryID = null; //da inserire una volta creato dal database
         this.deliveryPathID = deliveryPathID;
         this.senderID = senderID;
         this.receiverID = receiverID;
