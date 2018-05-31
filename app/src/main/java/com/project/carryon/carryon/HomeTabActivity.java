@@ -38,7 +38,7 @@ public class HomeTabActivity extends AppCompatActivity {
 
         db.collection("deliveries")
                 .whereEqualTo("senderID","currentUID") //also add deliveries where current user is user2
-                //.whereGreaterThanOrEqualTo -- time comparison within deliveries
+                //.whereGreaterThanOrEqualTo //-- time comparison within deliveries
                 //orderBy("time").limit(3); -- sample code for ordering deliveries / or maybe we can order it later
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -88,8 +88,8 @@ public class HomeTabActivity extends AppCompatActivity {
         User userProva2 = new User("fj3rieo","Simone","Porcu","pork","dsadf");
         ListView list = (ListView)findViewById(R.id.listView_orders);
         deliveryList = new ArrayList<>();
-        deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));
-        deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,userProva2, currentUser, userProva, new Date(2018,5,20),new Date(2018,5,21),1));
+        //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));
+        //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,userProva2, currentUser, userProva, new Date(2018,5,20),new Date(2018,5,21),1));
 
         OrdersAdapter adapter = new OrdersAdapter(getApplicationContext(), deliveryList, currentUser);
         list.setAdapter(adapter);

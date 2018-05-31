@@ -6,24 +6,28 @@ package com.project.carryon.carryon.GeneralClasses;
  */
 
 public class User {
-    private String UID;
+    private String userID;
     private String name;
     private String surname;
     private String username;
     private String email;
+    private String password;
+    private String phoneNumber;
+    private String mainAddressID;
 
-    //ADD: password, phoneNumber, Address
-
-    public User(String UID, String name, String surname, String username, String email) {
-        this.UID = UID;
+    public User(String name, String surname, String username, String email, String password, String phoneNumber, String mainAddressID) {
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.mainAddressID = mainAddressID;
     }
 
-    public String getUID() {
-        return UID;
+
+    public String getuserID() {
+        return userID;
     }
 
     public String getName() {
@@ -42,6 +46,27 @@ public class User {
         return email;
     }
 
-//others fields
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getMainAddressID() {
+        return mainAddressID;
+    }
+
+    public void setMainAddressID(String mainAddressID) {
+        this.mainAddressID = mainAddressID;
+    }
 }
