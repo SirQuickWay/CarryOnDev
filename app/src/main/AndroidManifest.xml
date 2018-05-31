@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignupActivity" />
-        <activity android:name=".HomeTabActivity"></activity>
+        <activity android:name=".HomeTabActivity" />
+        <activity android:name=".NewDeliveryActivity"></activity>
     </application>
 
 </manifest>

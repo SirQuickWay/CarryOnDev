@@ -8,35 +8,45 @@ import java.util.Date;
 
 public class Delivery {
     private String deliveryID;
-    //private Path deliveryPath;
-    private User sender;
-    private User receiver;
-    private User carrier;
-    private User creator;
-    private int status;
-    private Boolean deliveryComplete;
+    private String deliveryPathID;
+    private String senderID;
+    private String receiverID;
+    private String carrierID;
+    private String creatorID;
+    private int status;   //0 prima di QRcode1; 1 dopo QRcode1 (pacco preso); 2 dopo QRcode2 (pacco consegnato)
+    private Boolean user2Confirmed;
+    private Boolean carrierConfirmed;
     private String packageContent;
     private double packageDim1;
     private double packageDim2;
     private double packageDim3;
     private double packageWeight;
     private double price;
-    private Date creationDate;        //Momento in cui tutti hanno accettato
-    private Date pickUpDate;         //Date Vere in cui le cose succedono. Data Delivery programmata si ricava dal Path
-    private Date receivedDate;
+    private long creationDate;        //Momento in cui tutti hanno accettato
+    private long pickUpDate;         //Date Vere in cui le cose succedono. Data Delivery programmata si ricava dal Path
+    private long receivedDate;
     //QR codes da aggiungere.
     //l'indirizzo si ricava dagli users.
 
-    public Delivery(String deliveryID, User creator, int status, Boolean deliveryComplete, String packageContent, double packageDim1, double packageDim2, double packageDim3, double packageWeight) {
+    public Delivery(String deliveryID, String deliveryPathID, String senderID, String receiverID, String carrierID, String creatorID, String packageContent, double packageDim1, double packageDim2, double packageDim3, double packageWeight, double price, long creationDate) {
         this.deliveryID = deliveryID;
-        this.creator = creator;
-        this.status = status;
-        this.deliveryComplete = deliveryComplete;
+        this.deliveryPathID = deliveryPathID;
+        this.senderID = senderID;
+        this.receiverID = receiverID;
+        this.carrierID = carrierID;
+        this.creatorID = creatorID;
+        this.status = 0;
+        this.user2Confirmed = false;
+        this.carrierConfirmed = false;
         this.packageContent = packageContent;
         this.packageDim1 = packageDim1;
         this.packageDim2 = packageDim2;
         this.packageDim3 = packageDim3;
         this.packageWeight = packageWeight;
+        this.price = price;
+        this.creationDate = creationDate;
+        this.pickUpDate = 0;
+        this.receivedDate = 0;
     }
 
     public String getDeliveryID() {
@@ -47,36 +57,44 @@ public class Delivery {
         this.deliveryID = deliveryID;
     }
 
-    public User getSender() {
-        return sender;
+    public String getDeliveryPathID() {
+        return deliveryPathID;
     }
 
-    public void setSender(User sender) {
-        this.sender = sender;
+    public void setDeliveryPathID(String deliveryPathID) {
+        this.deliveryPathID = deliveryPathID;
     }
 
-    public User getReceiver() {
-        return receiver;
+    public String getSenderID() {
+        return senderID;
     }
 
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
+    public void setSenderID(String senderID) {
+        this.senderID = senderID;
     }
 
-    public User getCarrier() {
-        return carrier;
+    public String getReceiverID() {
+        return receiverID;
     }
 
-    public void setCarrier(User carrier) {
-        this.carrier = carrier;
+    public void setReceiverID(String receiverID) {
+        this.receiverID = receiverID;
     }
 
-    public User getCreator() {
-        return creator;
+    public String getCarrierID() {
+        return carrierID;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCarrierID(String carrierID) {
+        this.carrierID = carrierID;
+    }
+
+    public String getCreatorID() {
+        return creatorID;
+    }
+
+    public void setCreatorID(String creatorID) {
+        this.creatorID = creatorID;
     }
 
     public int getStatus() {
@@ -87,12 +105,20 @@ public class Delivery {
         this.status = status;
     }
 
-    public Boolean getDeliveryComplete() {
-        return deliveryComplete;
+    public Boolean getUser2Confirmed() {
+        return user2Confirmed;
     }
 
-    public void setDeliveryComplete(Boolean deliveryComplete) {
-        this.deliveryComplete = deliveryComplete;
+    public void setUser2Confirmed(Boolean user2Confirmed) {
+        this.user2Confirmed = user2Confirmed;
+    }
+
+    public Boolean getCarrierConfirmed() {
+        return carrierConfirmed;
+    }
+
+    public void setCarrierConfirmed(Boolean carrierConfirmed) {
+        this.carrierConfirmed = carrierConfirmed;
     }
 
     public String getPackageContent() {
@@ -143,27 +169,27 @@ public class Delivery {
         this.price = price;
     }
 
-    public Date getCreationDate() {
+    public long getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(long creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Date getPickUpDate() {
+    public long getPickUpDate() {
         return pickUpDate;
     }
 
-    public void setPickUpDate(Date pickUpDate) {
+    public void setPickUpDate(long pickUpDate) {
         this.pickUpDate = pickUpDate;
     }
 
-    public Date getReceivedDate() {
+    public long getReceivedDate() {
         return receivedDate;
     }
 
-    public void setReceivedDate(Date receivedDate) {
+    public void setReceivedDate(long receivedDate) {
         this.receivedDate = receivedDate;
     }
 }
