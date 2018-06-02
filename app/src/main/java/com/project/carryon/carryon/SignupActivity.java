@@ -6,20 +6,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.project.carryon.carryon.GeneralClasses.User;
 
 public class SignupActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    String username;
+    String surname;
+    String name;
+    String email;
+    String password;
+    String repeatPassword;
+    String phoneNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +56,13 @@ public class SignupActivity extends AppCompatActivity {
         EditText phoneNumberEd = findViewById(R.id.editText_phoneNumber);
 
         //Get text from each editText
-        String username = usernameEd.getText().toString();
-        String surname = surnameEd.getText().toString();
-        String name = nameEd.getText().toString();
-        String email = emailEd.getText().toString();
-        String password = passwordEd.getText().toString();
-        String repeatPassword = repeatPasswordEd.getText().toString();
-        String phoneNumber = phoneNumberEd.getText().toString();
+        username = usernameEd.getText().toString();
+        surname = surnameEd.getText().toString();
+        name = nameEd.getText().toString();
+        email = emailEd.getText().toString();
+        password = passwordEd.getText().toString();
+        repeatPassword = repeatPasswordEd.getText().toString();
+        phoneNumber = phoneNumberEd.getText().toString();
         //General errors checks
         if(username.equals(""))
             Toast.makeText(SignupActivity.this,"Username cannot be empty!", Toast.LENGTH_SHORT).show();
@@ -69,9 +80,18 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(SignupActivity.this,"Password and Repeat password must be equal!", Toast.LENGTH_SHORT).show();
         else if(phoneNumber.equals(""))
             Toast.makeText(SignupActivity.this,"Phone Number cannot be empty!", Toast.LENGTH_SHORT).show();
-        else
+        else {
             signUpUserWithFirebase(email, password);
+        }
 
+    }
+    private void addUserOnDatabse()
+    {
+        User newUser = new User(name,surname,username,email,phoneNumber,"");
+        newUser.setUserID(mAuth.getUid());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("users").document(mAuth.getUid()).set(newUser);
     }
     private void signUpUserWithFirebase(String email, String password)
     {
@@ -82,6 +102,7 @@ public class SignupActivity extends AppCompatActivity {
 
                         if(task.isSuccessful()){
                             Toast.makeText(SignupActivity.this, "Signed up! You are now registered!", Toast.LENGTH_SHORT).show();
+                            addUserOnDatabse();
                         }
                         else if(task.getException() instanceof FirebaseAuthUserCollisionException){ // If a user is already registered
                             Toast.makeText(SignupActivity.this, "User already registered!", Toast.LENGTH_SHORT).show();
