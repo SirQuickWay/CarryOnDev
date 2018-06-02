@@ -52,16 +52,16 @@ public class OrdersAdapter extends BaseAdapter {
         TextView deliveryDate = v.findViewById(R.id.textView_deliveryDate);
 
         de.hdodenhof.circleimageview.CircleImageView statusView = v.findViewById(R.id.circle_status);
-        if(currentUser.getUID().equals(deliveryList.get(i).getSender().getUID())) {
+        /*if(currentUser.getuserID().equals(deliveryList.get(i).getSender().getUID())) {
             fromTo.setText("To " + deliveryList.get(i).getReceiver().getName());
         }
         else if(currentUser.getUID().equals(deliveryList.get(i).getReceiver().getUID())) {
             fromTo.setText("From " + deliveryList.get(i).getSender().getName());
-        }
-        Date d = deliveryList.get(i).getPickUpDate();
+        }*/
+        /*Date d = deliveryList.get(i).getPickUpDate();
         pickupDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
-        d = deliveryList.get(i).getDeliveryDate();
-        deliveryDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
+        d = deliveryList.get(i).getReceivedDate();
+        deliveryDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());*/
         switch(deliveryList.get(i).getStatus())
         {
             case 0:

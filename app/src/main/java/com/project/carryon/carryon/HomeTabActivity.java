@@ -83,9 +83,9 @@ public class HomeTabActivity extends AppCompatActivity {
                 });
 
 
-        currentUser = new User("jjsk","Matteo","Demartis","b51s","b51s");
-        User userProva  = new User("sjkdfs","Elena","Palombini","paloele","eelel");
-        User userProva2 = new User("fj3rieo","Simone","Porcu","pork","dsadf");
+       // currentUser = new User("jjsk","Matteo","Demartis","b51s","b51s");
+       // User userProva  = new User("sjkdfs","Elena","Palombini","paloele","eelel");
+       // User userProva2 = new User("fj3rieo","Simone","Porcu","pork","dsadf");
         ListView list = (ListView)findViewById(R.id.listView_orders);
         deliveryList = new ArrayList<>();
         //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));

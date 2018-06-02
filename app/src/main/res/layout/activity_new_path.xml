@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constrantLayout"
+    android:id="@+id/MainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="32dp"
@@ -14,8 +14,8 @@
         android:id="@+id/editText_newPath"
         android:layout_width="150dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:gravity="center"
@@ -25,15 +25,25 @@
         android:textColor="@color/colorPrimary"
         android:textSize="30sp" />
 
+    <View
+        android:id="@+id/separatingLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/black" />
+
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/startAddress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -50,16 +60,19 @@
             app:layout_constraintVertical_bias="0.224" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextStartAddress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_weight="1.5"
+            android:backgroundTint="@color/colorPrimary"
             android:ems="10"
+            android:hint="@string/insert_here"
             android:singleLine="true"
-            android:ellipsize="middle"
-            android:maxLines="1"
+            android:textColorLink="@color/colorPrimary"
+            android:textCursorDrawable="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.917"
@@ -73,12 +86,11 @@
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="-198dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/endAddress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -95,16 +107,18 @@
             app:layout_constraintVertical_bias="0.224" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editTextEndAddress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_weight="1.5"
+            android:backgroundTint="@color/colorPrimary"
             android:ems="10"
+            android:hint="@string/insert_here"
             android:singleLine="true"
-            android:ellipsize="middle"
-            android:maxLines="1"
+            android:textColorLink="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.917"
@@ -118,14 +132,15 @@
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="198dp"
         android:layout_weight="1">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/range"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="0.5"
             android:paddingBottom="4dp"
             android:paddingTop="8dp"
@@ -137,30 +152,40 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_weight="1"
-                android:text="500" />
+                android:backgroundTint="@color/colorPrimary"
+                android:text="500"
+                android:textColorLink="@color/colorPrimary"
+                android:theme="@style/radiotheme" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
                 android:layout_weight="1"
-                android:text="1000" />
+                android:backgroundTint="@color/colorPrimary"
+                android:text="1000"
+                android:textColorLink="@color/colorPrimary"
+                android:theme="@style/radiotheme" />
 
             <RadioButton
                 android:id="@+id/radioButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
                 android:layout_weight="1"
-                android:text="Edit" />
+                android:text="Edit"
+                android:textColorLink="@color/colorPrimary"
+                android:theme="@style/radiotheme" />
         </RadioGroup>
 
     </LinearLayout>
@@ -172,7 +197,7 @@
         android:layout_weight="1">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/departureDate"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="4dp"
@@ -189,7 +214,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:hint="dd/mm/yy"
+            android:hint="@string/date_departure_hint"
+            android:textColorLink="@color/colorPrimary"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -202,7 +228,7 @@
         android:orientation="horizontal">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/departureTime"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -226,27 +252,27 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:hint="dd/mm/yy"
+            android:hint="@string/hour_departure_hint"
+            android:textColorLink="@color/colorPrimary"
             android:textSize="18sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutTravel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/timeOfTravel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/time_travel"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -256,17 +282,35 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.224" />
 
+        <TextView
+            android:id="@+id/hour"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:hint="@string/hours"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/minute"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:hint="@string/minutes"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="1">
 
         <CheckedTextView
-            android:id="@+id/checkedTextView"
+            android:id="@+id/mainTransport"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -284,58 +328,63 @@
             app:layout_constraintVertical_bias="0.224" />
 
         <RadioGroup
+            android:id="@+id/transport"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/walk"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:button="@drawable/walk" />
 
             <RadioButton
-                android:id="@+id/radioButton9"
+                android:id="@+id/car"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:button="@drawable/car" />
 
             <RadioButton
-                android:id="@+id/radioButton8"
+                android:id="@+id/subway"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+
+                android:button="@drawable/subway" />
 
             <RadioButton
-                android:id="@+id/radioButton7"
+                android:id="@+id/bike"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
-                android:text="RadioButton" />
 
-            <RadioButton
-                android:id="@+id/radioButton6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="RadioButton" />
+                android:button="@drawable/bike" />
         </RadioGroup>
 
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_signUp2"
+        android:id="@+id/add_path"
         android:layout_width="120dp"
         android:layout_height="0dp"
         android:layout_gravity="right"
@@ -345,7 +394,7 @@
         android:layout_marginTop="11dp"
         android:layout_weight="1"
         android:background="#FFD123"
-        android:text="@string/sign_up"
+        android:text="@string/add"
         android:textColor="#16518E"
         android:textSize="18sp"
         app:layout_constraintVertical_bias="1.0" />
