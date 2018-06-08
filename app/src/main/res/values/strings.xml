@@ -39,5 +39,7 @@
     <string name="show_qr_code">Show QR code</string>
     <string name="call">Call</string>
     <string name="text">Text</string>
+    <string name="delivery">Delivery</string>
+    <string name="scan_qr_code">Scan QR code</string>
 
 </resources>

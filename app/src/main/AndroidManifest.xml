@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SingleOrder">
+        <activity android:name=".SingleDelivery">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,8 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".HomeTabActivity" />
         <activity android:name=".NewDeliveryActivity" />
-        <activity android:name=".NewPath"></activity>
+        <activity android:name=".NewPath" />
+        <activity android:name=".SingleOrder"></activity>
     </application>
 
 </manifest>
