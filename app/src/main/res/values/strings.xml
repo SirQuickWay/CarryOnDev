@@ -33,5 +33,11 @@
     <string name="insert_here">Insert here</string>
     <string name="hours">hh:</string>
     <string name="minutes">mm</string>
+    <string name="order">Order</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="show_qr_code">Show QR code</string>
+    <string name="call">Call</string>
+    <string name="text">Text</string>
 
 </resources>
