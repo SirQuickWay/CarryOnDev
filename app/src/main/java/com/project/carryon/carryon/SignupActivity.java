@@ -31,6 +31,8 @@ public class SignupActivity extends AppCompatActivity {
     String password;
     String repeatPassword;
     String phoneNumber;
+    String mainAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class SignupActivity extends AppCompatActivity {
         EditText passwordEd = findViewById(R.id.editText_password);
         EditText repeatPasswordEd = findViewById(R.id.editText_repeatPassword);
         EditText phoneNumberEd = findViewById(R.id.editText_phoneNumber);
+        EditText mainAddressEd = findViewById(R.id.editText_mainAddress);
 
         //Get text from each editText
         username = usernameEd.getText().toString();
@@ -63,6 +66,8 @@ public class SignupActivity extends AppCompatActivity {
         password = passwordEd.getText().toString();
         repeatPassword = repeatPasswordEd.getText().toString();
         phoneNumber = phoneNumberEd.getText().toString();
+        mainAddress = mainAddressEd.getText().toString();
+
         //General errors checks
         if(username.equals(""))
             Toast.makeText(SignupActivity.this,"Username cannot be empty!", Toast.LENGTH_SHORT).show();
@@ -80,6 +85,8 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(SignupActivity.this,"Password and Repeat password must be equal!", Toast.LENGTH_SHORT).show();
         else if(phoneNumber.equals(""))
             Toast.makeText(SignupActivity.this,"Phone Number cannot be empty!", Toast.LENGTH_SHORT).show();
+        else if (mainAddress.equals(""))
+            Toast.makeText(SignupActivity.this,"Main Address cannot be empty!", Toast.LENGTH_SHORT).show();
         else {
             signUpUserWithFirebase(email, password);
         }
@@ -87,6 +94,8 @@ public class SignupActivity extends AppCompatActivity {
     }
     private void addUserOnDatabse()
     {
+        //INSERIRE LA PARTE DELL'ADDRESS CON LA STRINGA mainAddress.
+
         User newUser = new User(name,surname,username,email,phoneNumber,"");
         newUser.setUserID(mAuth.getUid());
         FirebaseFirestore db = FirebaseFirestore.getInstance();

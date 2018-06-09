@@ -177,6 +177,15 @@
         tools:layout_editor_absoluteX="63dp"
         tools:layout_editor_absoluteY="290dp" />
 
+    <EditText
+        android:id="@+id/editText_mainAddress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="@string/main_address"
+        android:inputType="textPostalAddress" />
+
     <Button
         android:id="@+id/button_signUp"
         android:layout_width="120dp"
