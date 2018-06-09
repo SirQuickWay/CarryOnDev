@@ -60,6 +60,8 @@ public class NewDeliveryActivity extends AppCompatActivity {
     private Button doneButton;
     private String you;
 
+    //parte dell'intent
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -226,7 +226,6 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Insert weight here"
-            android:inputType="number"
             android:textSize="18sp" />
 
         <TextView
