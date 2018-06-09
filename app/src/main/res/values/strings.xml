@@ -33,6 +33,19 @@
     <string name="insert_here">Insert here</string>
     <string name="hours">hh:</string>
     <string name="minutes">mm</string>
+    <string name="order">Order</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="show_qr_code">Show QR code</string>
+    <string name="call">Call</string>
+    <string name="text">Text</string>
+    <string name="delivery">Delivery</string>
+    <string name="scan_qr_code">Scan QR code</string>
+    <string name="path_inserted">Path Inserted</string>
+    <string name="back_to_homepage">Back to Homepage</string>
+    <string name="receiver"><u>Receiver</u></string>
+    <string name="carrier"><u>Carrier</u></string>
+
 
     //NEW DELIVERY ACTIVITY
     <string name="new_delivery">New Delivery</string>

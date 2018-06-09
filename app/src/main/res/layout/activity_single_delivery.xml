@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="@android:color/background_light"
+    tools:context=".SingleDelivery">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TextView_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:text="@string/delivery"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/TextView_code"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp"
+            android:text="#HWB739"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/info2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#0000"
+            android:drawableStart="@drawable/delete"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separatingLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TextView_from"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.25"
+            android:text="@string/from"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/TextView_from_user"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Eric"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TextView_to"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0.25"
+            android:text="@string/to"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
+
+        <CheckedTextView
+            android:id="@+id/TextView_to_user"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:text="Will"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.224" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout123"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/firstState"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="8dp"
+                android:src="@color/colorPrimary" />
+
+            <View
+                android:id="@+id/separatingLine1"
+                android:layout_width="1dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.25"
+            android:text="12:15"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.224" />
+
+        <TextView
+            android:id="@+id/TextView_accepted"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:text="YOU accepted"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/separatingLine12"
+                android:layout_width="1dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorPrimary" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/secondState"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:src="@color/colorPrimary" />
+
+            <View
+                android:id="@+id/separatingLine2"
+                android:layout_width="1dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.25"
+            android:text="14:20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.224" />
+
+        <TextView
+            android:id="@+id/TextView_got_package"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:text="YOU got package"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/separatingLine22"
+                android:layout_width="1dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorPrimary" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/thirdState"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:src="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.25"
+            android:text="15:00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.224" />
+
+        <TextView
+            android:id="@+id/TextView_delivered"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:text="YOU delivered"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.6"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardBackgroundColor="#fafafa"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true">
+
+
+            <LinearLayout
+                android:id="@+id/layouta"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                tools:context=".SingleOrder">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_imagg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="0.5"
+                    android:src="@color/colorAccent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/sender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="0.2"
+                        android:text="SENDER:" />
+
+                    <TextView
+                        android:id="@+id/senderName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="0.2"
+                        android:text="Jordan Belfort" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp">
+
+                        <Button
+                            android:id="@+id/bcall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/call"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/btext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/text"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardBackgroundColor="#fafafa"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true">
+
+
+            <LinearLayout
+                android:id="@+id/layoutzzz"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                tools:context=".SingleOrder">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="0.5"
+                    android:src="@color/deliveredStatus" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/reviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="0.2"
+                        android:text="RECEIVER:" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="0.2"
+                        android:text="Jordan Belfort" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp">
+
+                        <Button
+                            android:id="@+id/button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/call"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/button3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/text"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
+
+    <Button
+        android:id="@+id/show_QR_Code"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:layout_weight="0.9"
+        android:backgroundTint="@color/colorAccent"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="@string/scan_qr_code"
+        android:textColor="#16518E"
+        android:textSize="14sp"
+        app:layout_constraintVertical_bias="1.0" />
+</LinearLayout>
