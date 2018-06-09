@@ -6,4 +6,5 @@
     <color name="toBePickedUpStatus">#FFD123</color>
     <color name="pickedUpStatus">#16518E</color>
     <color name="deliveredStatus">#27AE60</color>
+    <color name="black">#000000</color>
 </resources>

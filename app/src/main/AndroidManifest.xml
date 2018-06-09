@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".NewDeliveryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".NewPath" />
         <activity android:name=".HomeTabActivity" />
-        <activity android:name=".NewDeliveryActivity"></activity>
+        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>

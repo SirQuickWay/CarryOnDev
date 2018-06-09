@@ -34,4 +34,26 @@
     <string name="hours">hh:</string>
     <string name="minutes">mm</string>
 
+    //NEW DELIVERY ACTIVITY
+    <string name="new_delivery">New Delivery</string>
+    <string name="look_for_carriers">Look for carriers</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="you">You</string>
+    <string name="insert_username">Insert username</string>
+    <string name="contents">Contents</string>
+    <string name="whats_in_package">What\'s in your package?</string>
+    <string name="size">Size</string>
+    <string name="height">Height</string>
+    <string name="width">Width</string>
+    <string name="depth">Depth</string>
+    <string name="weight">Weight</string>
+    <string name="kg">Kg</string>
+    <string name="cm">cm</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="from_now">From Now</string>
+
 </resources>
