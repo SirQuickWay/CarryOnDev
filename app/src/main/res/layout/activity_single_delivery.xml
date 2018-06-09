@@ -142,7 +142,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout123"
+        android:id="@+id/linearLayout_0"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.9"
@@ -163,7 +163,7 @@
                 android:src="@color/colorPrimary" />
 
             <View
-                android:id="@+id/separatingLine1"
+                android:id="@+id/line_01"
                 android:layout_width="1dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="24dp"
@@ -173,7 +173,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/text_time0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -196,7 +196,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="6dp"
             android:layout_weight="1"
-            android:text="YOU accepted"
+            android:text="@string/you_accepted"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -204,7 +204,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
+        android:id="@+id/linearLayout_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.9">
@@ -231,7 +231,7 @@
                 android:src="@color/colorPrimary" />
 
             <View
-                android:id="@+id/separatingLine2"
+                android:id="@+id/line_11"
                 android:layout_width="1dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="24dp"
@@ -241,7 +241,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/text_time1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -264,14 +264,14 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="6dp"
             android:layout_weight="1"
-            android:text="YOU got package"
+            android:text="@string/you_got_package"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayout_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.9">
@@ -300,7 +300,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/text_time2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -323,7 +323,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="6dp"
             android:layout_weight="1"
-            android:text="YOU delivered"
+            android:text="@string/you_delivered_package"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 

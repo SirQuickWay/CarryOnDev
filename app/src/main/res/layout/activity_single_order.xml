@@ -96,7 +96,7 @@
             app:layout_constraintVertical_bias="0.224" />
 
         <CheckedTextView
-            android:id="@+id/textView__from"
+            android:id="@+id/textView_sender"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -139,7 +139,7 @@
             app:layout_constraintVertical_bias="0.224" />
 
         <CheckedTextView
-            android:id="@+id/textView_to"
+            android:id="@+id/textView_receiver"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -179,7 +179,7 @@
                 android:src="@color/deliveredStatus" />
 
             <View
-                android:id="@+id/separatingLine1"
+                android:id="@+id/separatingLine01"
                 android:layout_width="1dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="24dp"
@@ -231,7 +231,7 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/separatingLine12"
+                android:id="@+id/separatingLine02"
                 android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginStart="8dp"
@@ -247,7 +247,7 @@
                 app:civ_border_color="#FF000000" />
 
             <View
-                android:id="@+id/separatingLine2"
+                android:id="@+id/separatingLine11"
                 android:layout_width="1dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="24dp"
@@ -257,7 +257,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/textView_time1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -298,7 +298,7 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/separatingLine22"
+                android:id="@+id/separatingLine12"
                 android:layout_width="1dp"
                 android:layout_height="8dp"
                 android:layout_marginStart="8dp"
@@ -316,7 +316,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textView_time2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"

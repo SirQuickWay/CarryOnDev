@@ -67,4 +67,12 @@
     <string name="time">Time</string>
     <string name="from_now">From Now</string>
 
+    //SINGLE DELIVERY / ORDER
+    <string name="accepted">accepted</string>
+    <string name="got_package">got package</string>
+    <string name="delivered_package">completed the delivery</string>
+    <string name="you_accepted">You accepted the delivery</string>
+    <string name="you_got_package">You got the package</string>
+    <string name="you_delivered_package">You completed the delivery</string>
+
 </resources>
