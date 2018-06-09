@@ -2,20 +2,25 @@ package com.project.carryon.carryon;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 // IMPORTED STARTS
 import android.app.DatePickerDialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 // IMPORTED FOR GEOCODE
 import android.app.ProgressDialog;
@@ -23,6 +28,13 @@ import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.project.carryon.carryon.GeneralClasses.Address;
+import com.project.carryon.carryon.GeneralClasses.Means;
+import com.project.carryon.carryon.GeneralClasses.Path;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,12 +53,13 @@ public class NewPath extends AppCompatActivity {
     EditText startAddress;
     EditText endAddress;
     Button completePath;
-
+    ProgressDialog dialog;
+    String currentUserID = "hm1RI2EReiXfkzPtHZa6hvVq57Q2";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_path);
-
+        dialog = new ProgressDialog(NewPath.this);
         // date and time picker dialog
         txtDate = (TextView) findViewById(R.id.in_date);
         txtTime = (TextView) findViewById(R.id.in_time);
@@ -96,12 +109,76 @@ public class NewPath extends AppCompatActivity {
                     Toast.makeText(NewPath.this,"Estimated time of travel cannot be empty!", Toast.LENGTH_SHORT).show();
                 else if(travelMinute.equals(""))
                     Toast.makeText(NewPath.this,"Estimated time of travel cannot be empty!", Toast.LENGTH_SHORT).show();
-
+                else {
                 /*if(RadioGroup.getCheckedRadioButtonId()== -1) {
                     Toast.makeText(NewPath.this, "Select the Range!", Toast.LENGTH_SHORT).show();
                 }*/
-                new GetCoordinates().execute(startAddress.getText().toString().replace(" " , "+"));
-                new GetCoordinates().execute(endAddress.getText().toString().replace(" " , "+"));
+                    /*dialog.setMessage("Please wait....");
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.show();*/
+
+
+                    GetCoordinates source = new GetCoordinates();
+                    GetCoordinates destination = new GetCoordinates();
+
+                    try {
+                        source.execute(startAddress.getText().toString().replace(" ", "+")).get();
+                        destination.execute(endAddress.getText().toString().replace(" ", "+")).get();
+
+
+                        if (!source.isAddressFound())
+                            Toast.makeText(getApplicationContext(), "Start address not found. Try again!", Toast.LENGTH_SHORT).show();
+                        else if (!destination.isAddressFound())
+                            Toast.makeText(getApplicationContext(), "End address not found. Try again!", Toast.LENGTH_SHORT).show();
+                        else {
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            Address sourAdd = new Address(source.getPIN(),source.getCountry(),source.getCity(),source.getAddress1(),Double.valueOf(source.getLng()),Double.valueOf(source.getLat()));
+                            Address destAdd = new Address(destination.getPIN(),destination.getCountry(),destination.getCity(),destination.getAddress1(),Double.valueOf(destination.getLng()),Double.valueOf(destination.getLat()));
+                            DocumentReference sourceRef = db.collection("addresses").document();
+                            DocumentReference destRef = db.collection("addresses").document();
+                            sourAdd.setAddressID(sourceRef.getId());
+                            destAdd.setAddressID(destRef.getId());
+                            sourceRef.set(sourAdd);
+                            destRef.set(destAdd);
+
+                            DocumentReference newPath = db.collection("paths").document();
+                            RadioGroup rg = findViewById(R.id.RGroup);
+                            int v = rg.getCheckedRadioButtonId();
+                            Means m = Means.CAR;
+                            switch (v)
+                            {
+                                case R.id.walk:
+                                    m = Means.FOOT;
+                                    break;
+                                case R.id.car:
+                                    m = Means.CAR;
+                                    break;
+                                case R.id.subway:
+                                    m = Means.PUBLICTRANSPORT;
+                                    break;
+                                case R.id.bike:
+                                    m = Means.BIKE;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            //String pathID = d.getId();
+                            //public Path(String carrierID, double range, Means means, long departureDate, long estimatedTime, String departureAddressID, String arrivalAddressID)
+                            long departureDate = new Date(mYear, mMonth, mDay).getTime();
+                            long estimatedTime = mMinute*60+mHour*60*60;
+                            Path p = new Path(currentUserID,1000, m, departureDate, estimatedTime, sourAdd.getAddressID(), destAdd.getAddressID());
+                            p.setPathID(newPath.getId());
+                            newPath.set(p);
+
+                            startActivity(new Intent(NewPath.this, PathInserted.class));
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
         });
         // number picker dialog
@@ -123,47 +200,6 @@ public class NewPath extends AppCompatActivity {
                 showMinute();
             }
         });
-    }
-    //GEOCODE TO GET COORDINATES
-    private class  GetCoordinates extends AsyncTask<String,Void,String> {
-        ProgressDialog dialog = new ProgressDialog(NewPath.this);
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            dialog.setMessage("Please wait....");
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
-        }
-        @Override
-        protected String doInBackground(String... strings) {
-            String response;
-            try{
-                String address = strings[0];
-                HttpDataHandler http = new HttpDataHandler();
-                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=AIzaSyAZos6hzsvLWSS5_aCg1d7JIPsCud7d4QQ", address);
-                response = http.getHttpData(url);
-                return response;
-            }catch (Exception ex){}
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            try{
-                JSONObject jsonObject =  new JSONObject(s);
-
-                String lat = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lat").toString();
-                String lng = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lng").toString();
-                // txtCoord.setText(String.format("Coordinates : %s / %s",lat, lng)); // if you want to show coordinates
-
-                if (dialog.isShowing())
-                    dialog.dismiss();
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     //date picker dialog

@@ -6,17 +6,15 @@ public class Address {
     private String country;
     private String city;
     private String street;
-    private String civicNumber;
     private double longitude;
     private double latitude;
 
-    public Address(String zipCode, String country, String city, String street, String civicNumber, double longitude, double latitude) {
+    public Address(String zipCode, String country, String city, String street, double longitude, double latitude) {
         this.addressID = null;
         this.zipCode = zipCode;
         this.country = country;
         this.city = city;
         this.street = street;
-        this.civicNumber = civicNumber;
         this.longitude = longitude;
         this.latitude = latitude;
     }
@@ -59,14 +57,6 @@ public class Address {
 
     public void setStreet(String street) {
         this.street = street;
-    }
-
-    public String getCivicNumber() {
-        return civicNumber;
-    }
-
-    public void setCivicNumber(String civicNumber) {
-        this.civicNumber = civicNumber;
     }
 
     public double getLongitude() {
