@@ -32,8 +32,6 @@ public class HomeTabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tab);
 
-
-
         final List<Delivery> userDeliveries = new ArrayList<>(); //List for MyOrders
 
         db.collection("deliveries")
