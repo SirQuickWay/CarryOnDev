@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
-        <activity android:name=".OrderPlaced">
+        <activity android:name=".PathInserted">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,8 @@
         <activity android:name=".NewDeliveryActivity" />
         <activity android:name=".NewPath" />
         <activity android:name=".SingleOrder" />
-        <activity android:name=".SingleDelivery"></activity>
+        <activity android:name=".SingleDelivery" />
+        <activity android:name=".OrderPlaced"></activity>
     </application>
 
 </manifest>
