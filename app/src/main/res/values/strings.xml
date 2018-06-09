@@ -41,5 +41,10 @@
     <string name="text">Text</string>
     <string name="delivery">Delivery</string>
     <string name="scan_qr_code">Scan QR code</string>
+    <string name="path_inserted">Path Inserted</string>
+    <string name="back_to_homepage">Back to Homepage</string>
+    <string name="receiver"><u>Receiver</u></string>
+    <string name="carrier"><u>Carrier</u></string>
+
 
 </resources>

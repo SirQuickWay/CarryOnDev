@@ -18,7 +18,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/editText_order"
+            android:id="@+id/TextView_delivery"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/editText_codeOrder"
+            android:id="@+id/TextView_code"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
@@ -78,8 +78,8 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <CheckedTextView
-            android:id="@+id/CheckedTextView_from"
+        <TextView
+            android:id="@+id/TextView_from"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -87,16 +87,11 @@
             android:layout_marginTop="8dp"
             android:layout_weight="0.25"
             android:text="@string/from"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224" />
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
 
-        <CheckedTextView
-            android:id="@+id/startAddress2"
+        <TextView
+            android:id="@+id/TextView_from_user"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -105,13 +100,7 @@
             android:layout_weight="1"
             android:text="Eric"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -122,24 +111,19 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <CheckedTextView
-            android:id="@+id/CheckedTextView_to"
+        <TextView
+            android:id="@+id/TextView_to"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="4dp"
             android:layout_weight="0.25"
             android:text="@string/to"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224" />
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
 
         <CheckedTextView
-            android:id="@+id/endAddress2"
+            android:id="@+id/TextView_to_user"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -204,8 +188,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.224" />
 
-        <CheckedTextView
-            android:id="@+id/endAddress4"
+        <TextView
+            android:id="@+id/TextView_accepted"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -213,6 +197,7 @@
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:text="YOU accepted"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -271,8 +256,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.224" />
 
-        <CheckedTextView
-            android:id="@+id/range2"
+        <TextView
+            android:id="@+id/TextView_got_package"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
@@ -280,6 +265,7 @@
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:text="YOU got package"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -329,8 +315,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.224" />
 
-        <CheckedTextView
-            android:id="@+id/departureDate2"
+        <TextView
+            android:id="@+id/TextView_delivered"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="4dp"
@@ -338,6 +324,7 @@
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:text="YOU delivered"
+            android:textColor="@android:color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -377,7 +364,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_weight="0.5"
-                    android:src="@color/colorPrimaryDark" />
+                    android:src="@color/colorAccent" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -468,7 +455,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_weight="0.5"
-                    android:src="@color/colorPrimaryDark" />
+                    android:src="@color/deliveredStatus" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -485,7 +472,7 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="0.2"
-                        android:text="SENDER:" />
+                        android:text="RECEIVER:" />
 
                     <TextView
                         android:id="@+id/textView6"
