@@ -40,7 +40,7 @@ public class HomeActivity extends TabActivity {
         TabMenu1.setIndicator("All Orders");
 
         //Set tab 1 activity to tab 1 menu.
-        TabMenu1.setContent(new Intent(this,LoginActivity.class));
+        //TabMenu1.setContent(new Intent(this,LoginActivity.class));
 
 
         //Adding tab1, tab2, tab3 to tabhost view.

@@ -1,6 +1,6 @@
 package com.project.carryon.carryon.GeneralClasses;
 
-enum Means {CAR,BIKE,FOOT,PUBLICTRANSPORT;}
+
 
 public class Path {
     private String pathID;
