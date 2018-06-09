@@ -5,5 +5,5 @@
     <color name="colorAccent">#ffd123</color>
     <color name="toBePickedUpStatus">#FFD123</color>
     <color name="pickedUpStatus">#16518E</color>
-    <color name="deliveredStatus">#27AE60</color>
+    <color name="deliveredStatus">#27ae60</color>
 </resources>
