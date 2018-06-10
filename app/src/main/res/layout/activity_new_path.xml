@@ -340,9 +340,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
                 android:layout_weight="1"
                 android:button="@drawable/walk" />
 
@@ -351,9 +348,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
                 android:layout_weight="1"
                 android:button="@drawable/car" />
 
@@ -362,8 +356,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
                 android:layout_weight="1"
 
                 android:button="@drawable/subway" />
@@ -373,11 +365,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
                 android:layout_weight="1"
-
                 android:button="@drawable/bike" />
+
         </RadioGroup>
 
 
@@ -393,7 +383,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="11dp"
         android:layout_weight="1"
-        android:background="#FFD123"
+        android:backgroundTint="@color/colorAccent"
         android:text="@string/add"
         android:textColor="#16518E"
         android:textSize="18sp"

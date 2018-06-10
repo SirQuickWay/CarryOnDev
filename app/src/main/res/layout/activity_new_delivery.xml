@@ -4,24 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="32dp"
-    android:layout_marginRight="32dp"
+    android:backgroundTint="@android:color/white"
     android:nestedScrollingEnabled="false"
     android:orientation="vertical"
     tools:context=".NewDeliveryActivity">
 
+    <View
+        android:id="@+id/separatingLine3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#0e3256" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_sendReceive"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginLeft="-32dp"
+        android:layout_marginRight="-32dp"
+        android:layout_weight="1"
+        android:checkedButton="@+id/button_send"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/button_send"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/send_button"
+            android:button="@null"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:paddingLeft="24dp"
+            android:text="@string/send"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            android:textColor="#ffffff" />
+
+        <RadioButton
+            android:id="@+id/button_receive"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/send_button"
+            android:button="@null"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:paddingRight="24dp"
+            android:text="@string/receive"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            android:textColor="#ffffff" />
+    </RadioGroup>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_newDelivery"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="bottom|center_horizontal|center"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
             android:text="@string/new_delivery"
             android:textAppearance="@android:style/TextAppearance.Material.Large"
             android:textColor="@color/deliveredStatus"
@@ -32,58 +80,18 @@
         android:id="@+id/separatingLine2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:background="@android:color/black" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup_sendReceive"
-        android:layout_width="340dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:checkedButton="@+id/button_send"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/button_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:layout_weight="1"
-            android:background="@drawable/send_button"
-            android:button="@null"
-            android:gravity="center"
-            android:onClick="onRadioButtonClicked"
-            android:paddingBottom="2dp"
-            android:paddingTop="2dp"
-            android:text="@string/send"
-            android:textAppearance="@android:style/TextAppearance.Holo.Large"
-            android:textColor="#ffffff" />
-
-        <RadioButton
-            android:id="@+id/button_receive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@drawable/send_button"
-            android:button="@null"
-            android:gravity="center_vertical|center_horizontal|center"
-            android:onClick="onRadioButtonClicked"
-            android:paddingBottom="2dp"
-            android:paddingTop="2dp"
-            android:text="@string/receive"
-            android:textAppearance="@android:style/TextAppearance.Holo.Large"
-            android:textColor="#ffffff" />
-    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_from"
@@ -96,8 +104,8 @@
             android:id="@+id/editText_senderName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/insert_username"
             android:ems="10"
+            android:hint="@string/insert_username"
             android:inputType="textPersonName"
             android:text="@string/you" />
     </LinearLayout>
@@ -105,8 +113,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_to"
@@ -121,7 +131,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/insert_username"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <TextView
@@ -129,79 +140,98 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.25"
-        android:text="@string/contents"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:paddingLeft="32dp"
+        android:text="Contents:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editText_packageContents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:ems="10"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_weight="3"
+        android:background="@drawable/my_border"
+        android:gravity="top"
         android:hint="@string/whats_in_package"
         android:inputType="text"
-        android:singleLine="false" />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center_horizontal|center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_size"
             android:layout_width="72dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/size"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/height"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
+            android:background="@drawable/my_border"
+            android:gravity="center_vertical|center"
             android:hint="@string/height"
             android:inputType="number"
-            android:textSize="18sp" />
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" x "
-            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/width"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="center"
+            android:background="@drawable/my_border"
+            android:gravity="center_vertical|center"
             android:hint="@string/width"
             android:inputType="number"
-            android:textSize="18sp" />
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:text=" x "
-            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/depth"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="center"
+            android:background="@drawable/my_border"
+            android:gravity="center_vertical|center"
             android:hint="@string/depth"
             android:inputType="number"
-            android:textSize="18sp" />
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -209,90 +239,117 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_weight"
             android:layout_width="72dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/weight"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/weight"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Insert weight here"
-            android:textSize="18sp" />
+            android:background="@drawable/my_border"
+            android:gravity="center_vertical|center"
+            android:hint="00"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
+            android:gravity="center"
             android:text="@string/kg"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_date"
             android:layout_width="72dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/date"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/in_date2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:background="@drawable/my_border"
+            android:gravity="center"
             android:hint="@string/date_departure_hint"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
             android:textColorLink="@color/colorPrimary"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:id="@+id/textView_time"
             android:layout_width="72dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/time"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/in_time2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:background="@drawable/my_border"
+            android:gravity="center"
             android:hint="@string/hour_departure_hint"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
             android:textColorLink="@color/colorPrimary"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/button_lookForCarriers"
-        android:layout_width="257dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginStart="53dp"
-        android:layout_weight="1"
-        android:background="#FFD123"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="0.3"
+        android:backgroundTint="@color/colorAccent"
+        android:gravity="center"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
         android:text="@string/look_for_carriers"
         android:textColor="#16518E" />
 

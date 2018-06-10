@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#16518e</color>
-    <color name="colorPrimaryDark">#13477D</color>
+    <color name="colorPrimaryDark">#124375</color>
     <color name="colorAccent">#ffd123</color>
     <color name="toBePickedUpStatus">#FFD123</color>
     <color name="pickedUpStatus">#16518E</color>
