@@ -7,5 +7,7 @@
     <color name="pickedUpStatus">#16518E</color>
     <color name="deliveredStatus">#27AE60</color>
     <color name="black">#000000</color>
-    <color name="white">#ffffff</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorTransBg">#26000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

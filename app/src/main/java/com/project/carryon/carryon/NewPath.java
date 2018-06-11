@@ -221,7 +221,39 @@ public class NewPath extends AppCompatActivity {
             }
         });
     }
+    //RANGE number picker dialog
+    public void showRange()
+    {
 
+        final Dialog d = new Dialog(NewPath.this);
+        d.setTitle("NumberPicker");
+        d.setContentView(R.layout.number_dialogue);
+        TextView b1 = (TextView) d.findViewById(R.id.button1);
+        TextView b2 = (TextView) d.findViewById(R.id.button2);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+        np.setMaxValue(10000); // max value 1000
+        np.setMinValue(1500);   // min value 0
+        np.getDisplayedValues();
+        np.setWrapSelectorWheel(true);
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                rdbRange.setText(String.format("%d",np.getValue())); //set the value to textview
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                d.dismiss(); // dismiss the dialog
+            }
+        });
+        d.show();
+
+
+    }
     //date picker dialog
     public void onDateClick(View v) {
         // Get Current Date
@@ -264,7 +296,6 @@ public class NewPath extends AppCompatActivity {
                 }, mHour, mMinute, true);
         timePickerDialog.show();
     }
-
     //HOUR number picker dialog
     public void showHour()
     {
@@ -317,39 +348,6 @@ public class NewPath extends AppCompatActivity {
             public void onClick(View v) {
                 tvminute.setText(String.format("%d",np.getValue())); //set the value to textview
                 estimMinute = np.getValue();
-                d.dismiss();
-            }
-        });
-        b2.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                d.dismiss(); // dismiss the dialog
-            }
-        });
-        d.show();
-
-
-    }
-    //RANGE number picker dialog
-    public void showRange()
-    {
-
-        final Dialog d = new Dialog(NewPath.this);
-        d.setTitle("NumberPicker");
-        d.setContentView(R.layout.number_dialogue);
-        TextView b1 = (TextView) d.findViewById(R.id.button1);
-        TextView b2 = (TextView) d.findViewById(R.id.button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
-        np.setMaxValue(10000); // max value 1000
-        np.setMinValue(1500);   // min value 0
-        np.getDisplayedValues();
-        np.setWrapSelectorWheel(true);
-        b1.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                rdbRange.setText(String.format("%d",np.getValue())); //set the value to textview
                 d.dismiss();
             }
         });

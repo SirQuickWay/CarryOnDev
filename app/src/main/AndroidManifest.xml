@@ -7,27 +7,31 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/final_logo_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/final_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".SingleOrder"/>
         <activity android:name=".NewDeliveryActivity" />
-        <activity android:name=".SingleOrder">
+        <activity android:name=".HomeTabFinal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme" />
         <activity android:name=".SelectCarrierActivity" />
+        <activity android:name=".NewPath" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeTabActivity" />
-        <activity android:name=".NewPath" />
         <activity android:name=".PathInserted" />
         <activity android:name=".SingleDelivery" />
-        <activity android:name=".SignupActivity" />
         <activity android:name=".OrderPlaced" />
         <activity android:name=".QrCodeTvActivity"></activity>
     </application>

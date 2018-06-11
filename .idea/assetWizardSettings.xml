@@ -3,6 +3,58 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState>
+              <option name="children">
+                <map>
+                  <entry key="imageAssetPanel">
+                    <value>
+                      <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="45" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="backgroundImage" value="C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Android Studio" />
+                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
+                                      <entry key="foregroundImage" value="C:\Users\Simone\Desktop\Project\CarryOn-SVG\logo_noText.svg" />
+                                      <entry key="foregroundLayerName" value="final_foreground_logo" />
+                                      <entry key="outputName" value="Final_Logo" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </PersistentState>
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -18,7 +70,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_check_circle_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_circle_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,11 +81,11 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="16518e" />
-                            <entry key="height" value="120" />
-                            <entry key="outputName" value="check_circle_blue" />
+                            <entry key="height" value="48" />
+                            <entry key="outputName" value="add_circle" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Simone" />
-                            <entry key="width" value="120" />
+                            <entry key="width" value="48" />
                           </map>
                         </option>
                       </PersistentState>
