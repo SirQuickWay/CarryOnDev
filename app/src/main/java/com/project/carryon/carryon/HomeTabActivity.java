@@ -28,11 +28,13 @@ public class HomeTabActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String currentUID; //GET FROM AUTH
+    String currentUID; //GET FROM AUTH - ok
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tab);
+
+        currentUID = getIntent().getStringExtra("currentID");
 
         final List<Delivery> userDeliveries = new ArrayList<>(); //List for MyOrders
 

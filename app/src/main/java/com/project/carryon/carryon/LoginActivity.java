@@ -90,6 +90,12 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, get signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginActivity.this, "User authenticated!",Toast.LENGTH_SHORT).show();
+                            String currentID = mAuth.getCurrentUser().getUid();
+
+                            //pass the currentID to HomeTabActivity
+                            Intent i = new Intent(getApplicationContext(), HomeTabActivity.class);
+                            i.putExtra("currentID", currentID);
+                            startActivity(i);
 
                         } else {
                             // If sign in fails,
