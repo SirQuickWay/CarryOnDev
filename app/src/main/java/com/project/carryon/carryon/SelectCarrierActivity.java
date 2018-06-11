@@ -1,5 +1,6 @@
 package com.project.carryon.carryon;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ public class SelectCarrierActivity extends AppCompatActivity {
     private Delivery newDelivery;
     private long deliveryDate;
     private List<Path> candidatePaths;
+    CarriersAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,7 @@ public class SelectCarrierActivity extends AppCompatActivity {
 
                                 final Path p = document.toObject(Path.class);
                                 //retrieve starting address associated to delivery from db
+
 
                                 db.collection("addresses")
                                         .whereEqualTo("addressID", p.getDepartureAddressID())
@@ -104,21 +107,10 @@ public class SelectCarrierActivity extends AppCompatActivity {
                                                                                 //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));
                                                                                 //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,userProva2, currentUser, userProva, new Date(2018,5,20),new Date(2018,5,21),1));
 
-                                                                                CarriersAdapter adapter = new CarriersAdapter(getApplicationContext(), candidatePaths);
+                                                                                adapter = new CarriersAdapter(getApplicationContext(), candidatePaths);
                                                                                 //list.
                                                                                 list.setAdapter(adapter);
-                                                                                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                                                                    @Override
-                                                                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                                                                        Toast.makeText(getApplicationContext(),"cisono!",Toast.LENGTH_SHORT).show();
-                                                                                        Path selectedPath = candidatePaths.get(i);
-                                                                                        newDelivery.setDeliveryPathID(selectedPath.getPathID());
-                                                                                        newDelivery.setCarrierID(selectedPath.getCarrierID());
-                                                                                        DocumentReference newDeliveryReference = db.collection("users").document();
-                                                                                        newDelivery.setDeliveryID(newDeliveryReference.getId());
-                                                                                        newDeliveryReference.set(newDelivery);
-                                                                                    }
-                                                                                });
+
 
                                                                             }
                                                                         }
@@ -130,7 +122,25 @@ public class SelectCarrierActivity extends AppCompatActivity {
                                         });
                             }
                             //All candidates paths are now been found
+                            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                                    Path selectedPath = candidatePaths.get(i);
+                                    newDelivery.setDeliveryPathID(selectedPath.getPathID());
+                                    newDelivery.setCarrierID(selectedPath.getCarrierID());
+                                    newDelivery.setStatus(0);
+                                    DocumentReference qrCode1 = db.collection("qrcodes").document();
+                                    DocumentReference qrCode2 = db.collection("qrcodes").document();
+                                    newDelivery.setPickedUpQRCode(qrCode1.getId());
+                                    newDelivery.setDeliveredQRCode(qrCode2.getId());
+                                    DocumentReference newDeliveryReference = db.collection("deliveries").document();
+                                    newDelivery.setDeliveryID(newDeliveryReference.getId());
+                                    newDeliveryReference.set(newDelivery);
+                                    Intent newIntent = new Intent(SelectCarrierActivity.this, OrderPlaced.class);
+                                    startActivity(newIntent);
+                                }
+                            });
 
 
                         }

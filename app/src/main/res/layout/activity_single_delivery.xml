@@ -530,7 +530,7 @@
         android:layout_weight="0.2" />
 
     <Button
-        android:id="@+id/show_QR_Code"
+        android:id="@+id/scan_QR_Code"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"

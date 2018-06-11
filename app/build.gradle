@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.project.carryon.carryon"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -32,6 +32,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.google.code.gson:gson:2.8.4'
     compile 'com.android.support:cardview-v7:26.+'
+    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

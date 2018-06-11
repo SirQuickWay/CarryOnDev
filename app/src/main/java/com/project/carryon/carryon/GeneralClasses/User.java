@@ -22,7 +22,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.mainAddressID = mainAddressID;
     }
-
+    public User(){}
 
     public String getUserID() {
         return userID;

@@ -6,16 +6,21 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
 import com.project.carryon.carryon.GeneralClasses.User;
 
@@ -24,17 +29,55 @@ import java.util.Date;
 public class SingleDelivery extends AppCompatActivity {
 
 
-    String deliveryID; //passata dalla homeActivityTab con l'intent
+    String deliveryID = "gnARkt77k7xeoPHaL49t"; //passata dalla homeActivityTab con l'intent
     String currentID;
 
     User sender;    //HO SALVATO IN SENDER E RECEIVER I DUE USER: DA METTERE NELLE CARDVIEW
     User receiver;
 
+    int status;
+    private IntentIntegrator qrScan;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_delivery);
+
+        updateUI();
+
+        Button b  = findViewById(R.id.info2);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateUI();
+            }
+        });
+        //QR code part
+        qrScan = new IntentIntegrator(this);
+        qrScan.setPrompt("Place a QR code inside the square to scan it.");
+        qrScan.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        Button scan = findViewById(R.id.scan_QR_Code);
+        scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                qrScan.initiateScan();
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateUI();
+    }
+
+    private  void updateUI()
+    {
 
         //localization of textviews
         final TextView sender_textView = findViewById(R.id.TextView_from_user);
@@ -78,7 +121,7 @@ public class SingleDelivery extends AppCompatActivity {
                                     if (task.isSuccessful() && !task.getResult().isEmpty())
                                     {
                                         DocumentSnapshot document = task.getResult().getDocuments().get(0);
-                                        String senderName = document.get("name").toString() +" "+ document.get("surname").toString();
+                                        String senderName = document.get("name").toString();// +" "+ document.get("surname").toString();
                                         sender_textView.setText(document.get("name").toString());
                                         sender = document.toObject(User.class);
                                         senderName_textView.setText(senderName);
@@ -95,14 +138,14 @@ public class SingleDelivery extends AppCompatActivity {
                                             }
                                         });
 
-                                        button_text_receiver.setOnClickListener(new View.OnClickListener() {
+                                        button_text_sender.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
 
-                                                String phoneNo = receiver.getPhoneNumber();
+                                                String phoneNo = sender.getPhoneNumber();
                                                 if(!TextUtils.isEmpty(phoneNo)) {
                                                     Intent smsIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + phoneNo));
-                                                    smsIntent.putExtra("sms_body", "");
+                                                    smsIntent.putExtra("sms_body", getText(R.string.message_start));
                                                     startActivity(smsIntent);
                                                 }
                                             }
@@ -117,7 +160,7 @@ public class SingleDelivery extends AppCompatActivity {
                                     if (task.isSuccessful() && !task.getResult().isEmpty())
                                     {
                                         DocumentSnapshot document = task.getResult().getDocuments().get(0);
-                                        String receiverName = document.get("name").toString() +" "+ document.get("surname").toString();
+                                        String receiverName = document.get("name").toString();// +" "+ document.get("surname").toString();
                                         receiver_textView.setText(document.get("name").toString());
                                         receiver = document.toObject(User.class);
                                         receiverName_textView.setText(receiverName);
@@ -141,7 +184,7 @@ public class SingleDelivery extends AppCompatActivity {
                                                 String phoneNo = receiver.getPhoneNumber();
                                                 if(!TextUtils.isEmpty(phoneNo)) {
                                                     Intent smsIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + phoneNo));
-                                                    smsIntent.putExtra("sms_body", "");
+                                                    smsIntent.putExtra("sms_body", getText(R.string.message_start));
                                                     startActivity(smsIntent);
                                                 }
                                             }
@@ -149,7 +192,7 @@ public class SingleDelivery extends AppCompatActivity {
                                     }
                                 }
                             });
-
+                            status = delivery.getStatus();
                             switch (delivery.getStatus())
                             {
                                 case 0 :
@@ -166,24 +209,32 @@ public class SingleDelivery extends AppCompatActivity {
                                 {
                                     Date creation = new Date(delivery.getCreationDate());
                                     time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
+                                    time0_textView.setVisibility(View.VISIBLE);
 
                                     Date pickUp = new Date(delivery.getPickUpDate());
                                     time1_textView.setText(String.format("%02d:%02d", pickUp.getHours(), pickUp.getMinutes()));
+                                    time1_textView.setVisibility(View.VISIBLE);
 
                                     delete_if_status1.setVisibility(View.INVISIBLE);
                                     state2_layout.setVisibility(View.INVISIBLE);
 
                                     break;
                                 }
-                                case 2 :
+                                case 2:
                                 {
+                                    Toast.makeText(getApplicationContext(),String.valueOf(status),Toast.LENGTH_SHORT).show();
                                     Date creation = new Date(delivery.getCreationDate());
+                                    time0_textView.setVisibility(View.VISIBLE);
                                     time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
 
+
                                     Date pickUp = new Date(delivery.getPickUpDate());
+                                    time1_textView.setVisibility(View.VISIBLE);
                                     time1_textView.setText(String.format("%02d:%02d", pickUp.getHours(), pickUp.getMinutes()));
 
+
                                     Date completion = new Date(delivery.getReceivedDate());
+                                    time2_textView.setVisibility(View.VISIBLE);
                                     time2_textView.setText(String.format("%02d:%02d", completion.getHours(),completion.getMinutes()));
 
                                     break;
@@ -195,5 +246,73 @@ public class SingleDelivery extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            //if qrcode has nothing in it
+            if (result.getContents() == null) {
+                Toast.makeText(this, "No QR code detected!", Toast.LENGTH_LONG).show();
+            } else {
+                //if qr contains data
+                String qrID = result.getContents();
+                final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                if(status == 0) {
+                    db.collection("deliveries").whereEqualTo("pickedUpQRCode", qrID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                                DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                                String retrievedDeliveryID = document.get("deliveryID").toString();
+                                Toast.makeText(getApplicationContext(),retrievedDeliveryID,Toast.LENGTH_SHORT).show();
+                                if(deliveryID.equals(retrievedDeliveryID))
+                                {
+
+                                    db.collection("deliveries").document(deliveryID).update("status", 1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            updateUI();
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
+                    });
+                }
+                else if(status == 1)
+                {
+                    db.collection("deliveries").whereEqualTo("deliveredQRCode", qrID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                                DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                                String retrievedDeliveyID = document.get("deliveryID").toString();
+                                if(deliveryID.equals(retrievedDeliveyID))
+                                {
+
+                                    db.collection("deliveries").document(deliveryID).update("status", 2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            status = 2;
+                                            updateUI();
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
+                    });
+                }
+
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

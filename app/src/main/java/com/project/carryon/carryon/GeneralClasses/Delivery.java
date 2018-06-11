@@ -25,6 +25,8 @@ public class Delivery {
     private long creationDate;        //Momento in cui tutti hanno accettato
     private long pickUpDate;         //Date Vere in cui le cose succedono. Data Delivery programmata si ricava dal Path
     private long receivedDate;
+    private String pickedUpQRCode;
+    private String deliveredQRCode;
     //QR codes da aggiungere.
     //l'indirizzo si ricava dagli users.
 
@@ -192,5 +194,21 @@ public class Delivery {
 
     public void setReceivedDate(long receivedDate) {
         this.receivedDate = receivedDate;
+    }
+
+    public String getPickedUpQRCode() {
+        return pickedUpQRCode;
+    }
+
+    public String getDeliveredQRCode() {
+        return deliveredQRCode;
+    }
+
+    public void setPickedUpQRCode(String pickedUpQRCode) {
+        this.pickedUpQRCode = pickedUpQRCode;
+    }
+
+    public void setDeliveredQRCode(String deliveredUpQRCode) {
+        this.deliveredQRCode = deliveredUpQRCode;
     }
 }

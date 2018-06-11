@@ -58,16 +58,15 @@
                 android:layout_height="match_parent"
                 android:gravity="bottom|right|center"
                 android:inputType="textPersonName"
-                android:text="Now we'll ask your Friend "
+                android:text="Now we'll notify your Friend "
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/TextView2"
+                android:id="@+id/user_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="bottom|left"
                 android:inputType="textPersonName"
-                android:text="@string/receiver"
                 android:textColor="@color/deliveredStatus" />
         </LinearLayout>
 
@@ -89,12 +88,11 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/TextView4"
+                android:id="@+id/carrier_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="left|center"
                 android:inputType="textPersonName"
-                android:text="@string/carrier"
                 android:textColor="@color/colorPrimary" />
 
             <TextView
@@ -103,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:gravity="right|center"
                 android:inputType="textPersonName"
-                android:text=" for"
+                android:text="of"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 
@@ -121,7 +119,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:inputType="textPersonName"
-                android:text="confirmation."
+                android:text="your delivery."
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
