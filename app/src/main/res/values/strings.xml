@@ -31,7 +31,7 @@
     <string name="new_path">New Path</string>
     <string name="add">Add</string>
     <string name="insert_here">Insert here</string>
-    <string name="hours">hh:</string>
+    <string name="hours">hh :&#160;</string>
     <string name="minutes">mm</string>
     <string name="order">Order</string>
     <string name="show_qr_code">Show QR code</string>

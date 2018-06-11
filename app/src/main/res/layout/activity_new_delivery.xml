@@ -155,7 +155,8 @@
         android:background="@drawable/my_border"
         android:gravity="top"
         android:hint="@string/whats_in_package"
-        android:inputType="text"
+        android:inputType="textMultiLine"
+        android:paddingTop="4dp"
         android:textSize="14sp" />
 
     <LinearLayout

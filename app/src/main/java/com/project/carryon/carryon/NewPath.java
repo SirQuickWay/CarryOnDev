@@ -48,6 +48,7 @@ public class NewPath extends AppCompatActivity {
     private int mYear, mMonth, mDay, mHour, mMinute;
     //NUMBER PICKER DIALOG DECLARATIONS
     private TextView tvhour, tvminute;
+    private RadioButton rdbRange;
     static Dialog d ;
     // GEOCODE DECLARATIONS
     EditText startAddress;
@@ -63,6 +64,7 @@ public class NewPath extends AppCompatActivity {
         // date and time picker dialog
         txtDate = (TextView) findViewById(R.id.in_date);
         txtTime = (TextView) findViewById(R.id.in_time);
+        rdbRange = (RadioButton) findViewById(R.id.radioButton);
 
         txtDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,12 @@ public class NewPath extends AppCompatActivity {
             }
         });
         txtTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTimeClick(v);
+            }
+        });
+        rdbRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onTimeClick(v);
@@ -184,6 +192,7 @@ public class NewPath extends AppCompatActivity {
         // number picker dialog
         tvhour = (TextView) findViewById(R.id.hour); //used for displaying the dialog when tapped and to show the value set
         tvminute = (TextView) findViewById(R.id.minute); //used for displaying the dialog when tapped and to show the value set
+        rdbRange = (RadioButton) findViewById(R.id.radioButton); //used for displaying the dialog when tapped and to show the value set
         tvhour.setOnClickListener(new View.OnClickListener()
         {
 
@@ -198,6 +207,14 @@ public class NewPath extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showMinute();
+            }
+        });
+        rdbRange.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v) {
+                showRange();
             }
         });
     }
@@ -257,7 +274,7 @@ public class NewPath extends AppCompatActivity {
         final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
         np.setMaxValue(100); // max value 60
         np.setMinValue(0);   // min value 0
-        np.setWrapSelectorWheel(false);
+        np.setWrapSelectorWheel(true);
         b1.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -289,12 +306,45 @@ public class NewPath extends AppCompatActivity {
         final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
         np.setMaxValue(59); // max value 60
         np.setMinValue(0);   // min value 0
-        np.setWrapSelectorWheel(false);
+        np.setWrapSelectorWheel(true);
         b1.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
                 tvminute.setText(String.format("%d",np.getValue())); //set the value to textview
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                d.dismiss(); // dismiss the dialog
+            }
+        });
+        d.show();
+
+
+    }
+    //RANGE number picker dialog
+    public void showRange()
+    {
+
+        final Dialog d = new Dialog(NewPath.this);
+        d.setTitle("NumberPicker");
+        d.setContentView(R.layout.number_dialogue);
+        TextView b1 = (TextView) d.findViewById(R.id.button1);
+        TextView b2 = (TextView) d.findViewById(R.id.button2);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+        np.setMaxValue(10000); // max value 1000
+        np.setMinValue(1500);   // min value 0
+        np.getDisplayedValues();
+        np.setWrapSelectorWheel(true);
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                rdbRange.setText(String.format("%d",np.getValue())); //set the value to textview
                 d.dismiss();
             }
         });

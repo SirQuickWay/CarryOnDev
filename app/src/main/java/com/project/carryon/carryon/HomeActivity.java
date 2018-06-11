@@ -8,9 +8,7 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 
-
 public class HomeActivity extends TabActivity {
-
 
 
     //INITIALIZE LISTVIEW STUFF
@@ -50,4 +48,5 @@ public class HomeActivity extends TabActivity {
 
 
     }
+
 }

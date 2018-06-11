@@ -1,9 +1,11 @@
 package com.project.carryon.carryon;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -92,4 +94,25 @@ public class HomeTabActivity extends AppCompatActivity {
         OrdersAdapter adapter = new OrdersAdapter(getApplicationContext(), deliveryList, currentUser);
         list.setAdapter(adapter);
         }
+
+    //to exit from the activity and the app
+    boolean doubleBackToExitPressedOnce = false;
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 }
