@@ -8,7 +8,7 @@
     <item>
 
         <bitmap
-            android:src="@drawable/logo_no_text"
+            android:src="@drawable/splashpic"
             android:gravity="center"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
