@@ -404,7 +404,7 @@
                             android:textSize="24sp" />
 
                         <TextView
-                            android:id="@+id/textView6"
+                            android:id="@+id/carrierName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -449,7 +449,7 @@
                             android:layout_weight="5" />
 
                         <Button
-                            android:id="@+id/button"
+                            android:id="@+id/call_carrier"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -463,7 +463,7 @@
                             android:layout_weight="1" />
 
                         <Button
-                            android:id="@+id/button3"
+                            android:id="@+id/text_carrier"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -486,7 +486,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             android:background="#0000"
-                            android:drawableStart="@drawable/car_clicked"
+                            android:drawableLeft="@drawable/car_clicked"
                             android:scaleX="1.2"
                             android:scaleY="1.2"
                             android:textSize="24sp" />

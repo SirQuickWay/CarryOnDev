@@ -1,9 +1,13 @@
 package com.project.carryon.carryon;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,6 +52,14 @@ public class SingleDelivery extends AppCompatActivity {
 
         final TextView time2_textView = findViewById(R.id.text_time2);
 
+        final TextView senderName_textView = findViewById(R.id.senderName);
+        final TextView receiverName_textView = findViewById(R.id.receiverName);
+
+        final Button button_call_sender = findViewById(R.id.call_sender);
+        final Button button_text_sender = findViewById(R.id.text_sender);
+        final Button button_call_receiver = findViewById(R.id.call_receiver);
+        final Button button_text_receiver = findViewById(R.id.text_receiver);
+
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("deliveries")
                 .whereEqualTo("deliveryID", deliveryID)
@@ -67,8 +79,34 @@ public class SingleDelivery extends AppCompatActivity {
                                     {
                                         DocumentSnapshot document = task.getResult().getDocuments().get(0);
                                         String senderName = document.get("name").toString() +" "+ document.get("surname").toString();
-                                        sender_textView.setText(senderName);
+                                        sender_textView.setText(document.get("name").toString());
                                         sender = document.toObject(User.class);
+                                        senderName_textView.setText(senderName);
+
+                                        button_call_sender.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+
+                                                String phoneNo = sender.getPhoneNumber();
+                                                if(!TextUtils.isEmpty(phoneNo)) {
+                                                    String dial = "tel:" + phoneNo;
+                                                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+                                                }
+                                            }
+                                        });
+
+                                        button_text_receiver.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+
+                                                String phoneNo = receiver.getPhoneNumber();
+                                                if(!TextUtils.isEmpty(phoneNo)) {
+                                                    Intent smsIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + phoneNo));
+                                                    smsIntent.putExtra("sms_body", "");
+                                                    startActivity(smsIntent);
+                                                }
+                                            }
+                                        });
                                     }
                                 }
                             });
@@ -80,8 +118,34 @@ public class SingleDelivery extends AppCompatActivity {
                                     {
                                         DocumentSnapshot document = task.getResult().getDocuments().get(0);
                                         String receiverName = document.get("name").toString() +" "+ document.get("surname").toString();
-                                        receiver_textView.setText(receiverName);
+                                        receiver_textView.setText(document.get("name").toString());
                                         receiver = document.toObject(User.class);
+                                        receiverName_textView.setText(receiverName);
+
+                                        button_call_receiver.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+
+                                                String phoneNo = receiver.getPhoneNumber();
+                                                if(!TextUtils.isEmpty(phoneNo)) {
+                                                    String dial = "tel:" + phoneNo;
+                                                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+                                                }
+                                            }
+                                        });
+
+                                        button_text_receiver.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+
+                                                String phoneNo = receiver.getPhoneNumber();
+                                                if(!TextUtils.isEmpty(phoneNo)) {
+                                                    Intent smsIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + phoneNo));
+                                                    smsIntent.putExtra("sms_body", "");
+                                                    startActivity(smsIntent);
+                                                }
+                                            }
+                                        });
                                     }
                                 }
                             });
@@ -128,7 +192,6 @@ public class SingleDelivery extends AppCompatActivity {
                                     break;
 
                             }
-                                //PARTE IN CUI ANDREBBERO INSERITE NELLE 2 CARDVIEW I SENDER E RECEIVER.
                         }
                     }
                 });

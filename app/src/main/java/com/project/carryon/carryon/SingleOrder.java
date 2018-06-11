@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,9 +14,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
+import com.project.carryon.carryon.GeneralClasses.Means;
 import com.project.carryon.carryon.GeneralClasses.User;
 
 import java.util.Date;
+
+import android.text.TextUtils;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 
 public class SingleOrder extends AppCompatActivity {
 
@@ -47,6 +54,12 @@ public class SingleOrder extends AppCompatActivity {
 
         final TextView sentence2_textView =findViewById(R.id.textView_status2);
         final TextView time2_textView = findViewById(R.id.textView_time2);
+
+        final TextView carrierName_texView = findViewById(R.id.carrierName);
+        final Button transport_image = findViewById(R.id.transportDetails);
+
+        final Button button_call = findViewById(R.id.call_carrier);
+        final Button button_text = findViewById(R.id.text_carrier);
 
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -103,6 +116,8 @@ public class SingleOrder extends AppCompatActivity {
                                         String carrierName = documentCarrier.get("name").toString();
                                         carrier = documentCarrier.toObject(User.class);
 
+                                        carrierName_texView.setText(carrier.getName().toString() +" "+ carrier.getSurname().toString());
+
                                         switch (delivery.getStatus())
                                         {
                                             case 0 :
@@ -152,15 +167,71 @@ public class SingleOrder extends AppCompatActivity {
 
                                         }
 
+                                        button_call.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
 
+                                                String phoneNo = carrier.getPhoneNumber();
+                                                if(!TextUtils.isEmpty(phoneNo)) {
+                                                    String dial = "tel:" + phoneNo;
+                                                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+                                                }
+                                            }
+                                        });
 
-                                        //PARTE IN CUI SI INSERISCONO I DATI DEL CARRIER ( carrier ) NELLA CARDVIEW
+                                        button_text.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
 
+                                                String phoneNo = carrier.getPhoneNumber();
+                                                if(!TextUtils.isEmpty(phoneNo)) {
+                                                    Intent smsIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + phoneNo));
+                                                    smsIntent.putExtra("sms_body", "");
+                                                    startActivity(smsIntent);
+                                                }
+                                            }
+                                        });
 
 
                                     }
                                 }
                             });
+
+                            db.collection("paths").whereEqualTo("pathID", delivery.getDeliveryPathID()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful() && !task.getResult().isEmpty())
+                                    {
+                                        DocumentSnapshot documentPath = task.getResult().getDocuments().get(0);
+                                        Means transport = documentPath.toObject(Means.class);
+
+                                        switch (transport)
+                                        {
+                                            case CAR:
+                                            {
+                                                transport_image.setCompoundDrawables(getApplicationContext().getResources().getDrawable( R.drawable.car_clicked), null, null,null);
+                                                break;
+                                            }
+                                            case BIKE:
+                                            {
+                                                transport_image.setCompoundDrawables(getApplicationContext().getResources().getDrawable( R.drawable.bike_clicked), null, null,null);
+                                                break;
+                                            }
+                                            case FOOT:
+                                            {
+                                                transport_image.setCompoundDrawables(getApplicationContext().getResources().getDrawable( R.drawable.walk_clicked), null, null,null);
+                                                break;
+                                            }
+                                            case PUBLICTRANSPORT:
+                                            {
+                                                transport_image.setCompoundDrawables(getApplicationContext().getResources().getDrawable( R.drawable.subway_clicked), null, null,null);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+
                         }
                     }
                 });

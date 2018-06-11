@@ -402,7 +402,7 @@
                         android:paddingTop="8dp">
 
                         <Button
-                            android:id="@+id/bcall"
+                            android:id="@+id/call_sender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
@@ -413,7 +413,7 @@
                             android:textSize="12sp" />
 
                         <Button
-                            android:id="@+id/btext"
+                            android:id="@+id/text_sender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
@@ -475,7 +475,7 @@
                         android:text="RECEIVER:" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/receiverName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -493,7 +493,7 @@
                         android:paddingTop="8dp">
 
                         <Button
-                            android:id="@+id/button"
+                            android:id="@+id/call_receiver"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
@@ -504,7 +504,7 @@
                             android:textSize="12sp" />
 
                         <Button
-                            android:id="@+id/button3"
+                            android:id="@+id/text_receiver"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
