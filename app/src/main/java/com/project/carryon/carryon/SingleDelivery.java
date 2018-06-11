@@ -80,6 +80,7 @@ public class SingleDelivery extends AppCompatActivity {
     {
 
         //localization of textviews
+        final TextView deliveryID_textView = findViewById(R.id.TextView_code);
         final TextView sender_textView = findViewById(R.id.TextView_from_user);
         final TextView receiver_textView = findViewById(R.id.TextView_to_user);
 
@@ -104,6 +105,8 @@ public class SingleDelivery extends AppCompatActivity {
         final Button button_text_receiver = findViewById(R.id.text_receiver);
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        deliveryID_textView.setText("#"+deliveryID.substring(0,6).toUpperCase());
         db.collection("deliveries")
                 .whereEqualTo("deliveryID", deliveryID)
                 .get()
@@ -214,15 +217,15 @@ public class SingleDelivery extends AppCompatActivity {
                                     Date pickUp = new Date(delivery.getPickUpDate());
                                     time1_textView.setText(String.format("%02d:%02d", pickUp.getHours(), pickUp.getMinutes()));
                                     time1_textView.setVisibility(View.VISIBLE);
-
+                                    delete_if_status0.setVisibility(View.VISIBLE);
                                     delete_if_status1.setVisibility(View.INVISIBLE);
+                                    state1_layout.setVisibility(View.VISIBLE);
                                     state2_layout.setVisibility(View.INVISIBLE);
 
                                     break;
                                 }
                                 case 2:
                                 {
-                                    Toast.makeText(getApplicationContext(),String.valueOf(status),Toast.LENGTH_SHORT).show();
                                     Date creation = new Date(delivery.getCreationDate());
                                     time0_textView.setVisibility(View.VISIBLE);
                                     time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
@@ -236,6 +239,12 @@ public class SingleDelivery extends AppCompatActivity {
                                     Date completion = new Date(delivery.getReceivedDate());
                                     time2_textView.setVisibility(View.VISIBLE);
                                     time2_textView.setText(String.format("%02d:%02d", completion.getHours(),completion.getMinutes()));
+
+                                    state1_layout.setVisibility(View.VISIBLE);
+                                    state2_layout.setVisibility(View.VISIBLE);
+
+                                    delete_if_status0.setVisibility(View.VISIBLE);
+                                    delete_if_status1.setVisibility(View.VISIBLE);
 
                                     break;
                                 }
@@ -267,7 +276,6 @@ public class SingleDelivery extends AppCompatActivity {
                             if (task.isSuccessful() && !task.getResult().isEmpty()) {
                                 DocumentSnapshot document = task.getResult().getDocuments().get(0);
                                 String retrievedDeliveryID = document.get("deliveryID").toString();
-                                Toast.makeText(getApplicationContext(),retrievedDeliveryID,Toast.LENGTH_SHORT).show();
                                 if(deliveryID.equals(retrievedDeliveryID))
                                 {
 
@@ -298,7 +306,6 @@ public class SingleDelivery extends AppCompatActivity {
                                     db.collection("deliveries").document(deliveryID).update("status", 2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            status = 2;
                                             updateUI();
                                         }
                                     });
