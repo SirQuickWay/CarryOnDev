@@ -26,8 +26,10 @@ import android.os.Bundle;
 
 public class SingleOrder extends AppCompatActivity {
 
-    String deliveryID; //passata dalla homeActivityTab con l'intent
-    String currentID;
+    String deliveryID = "gnARkt77k7xeoPHaL49t"; //passata dalla homeActivityTab con l'intent
+    String currentID = "hm1RI2EReiXfkzPtHZa6hvVq57Q2";
+
+    String QRCODE;
 
     User carrier; //serve per riempire i dettagli della CardView
 
@@ -36,6 +38,17 @@ public class SingleOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_order);
 
+
+
+        Button showQrCode = findViewById(R.id.show_QR_Code);
+        showQrCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent = new Intent(SingleOrder.this, QrCodeTvActivity.class);
+                newIntent.putExtra("QRCODE", QRCODE);
+                startActivity(newIntent);
+            }
+        });
         //localization of textViews
         final TextView sender_textView = findViewById(R.id.textView_sender);
         final TextView receiver_textView = findViewById(R.id.textView_receiver);
@@ -77,6 +90,7 @@ public class SingleOrder extends AppCompatActivity {
                             if (delivery.getSenderID().equals(currentID))
                             {
                                 sender_textView.setText(getText(R.string.you));
+                                QRCODE = delivery.getPickedUpQRCode();
                                 db.collection("users").whereEqualTo("userID", delivery.getReceiverID()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -93,6 +107,7 @@ public class SingleOrder extends AppCompatActivity {
                             else if (delivery.getReceiverID().equals(currentID))
                             {
                                 receiver_textView.setText(getText(R.string.you));
+                                QRCODE = delivery.getDeliveredQRCode();
                                 db.collection("users").whereEqualTo("userID", delivery.getSenderID()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -122,13 +137,15 @@ public class SingleOrder extends AppCompatActivity {
                                         {
                                             case 0 :
                                             {
-                                                sentence0_textView.setText(getText(R.string.carrier) + carrierName + getText(R.string.accepted));
+                                                sentence0_textView.setText(getText(R.string.carrier) +" " + carrierName +" " + getText(R.string.accepted));
                                                 Date creation = new Date(delivery.getCreationDate());
                                                 time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
 
                                                 delete_if_status0.setVisibility(View.INVISIBLE);
                                                 state1_layout.setVisibility(View.INVISIBLE);
                                                 state2_layout.setVisibility(View.INVISIBLE);
+
+
                                                 break;
                                             }
                                             case 1 :
@@ -143,6 +160,8 @@ public class SingleOrder extends AppCompatActivity {
 
                                                 delete_if_status1.setVisibility(View.INVISIBLE);
                                                 state2_layout.setVisibility(View.INVISIBLE);
+
+
 
                                                 break;
                                             }
@@ -203,7 +222,7 @@ public class SingleOrder extends AppCompatActivity {
                                     if (task.isSuccessful() && !task.getResult().isEmpty())
                                     {
                                         DocumentSnapshot documentPath = task.getResult().getDocuments().get(0);
-                                        Means transport = documentPath.toObject(Means.class);
+                                        /*Means transport = documentPath.toObject(Means.class);
 
                                         switch (transport)
                                         {
@@ -227,7 +246,7 @@ public class SingleOrder extends AppCompatActivity {
                                                 transport_image.setCompoundDrawables(getApplicationContext().getResources().getDrawable( R.drawable.subway_clicked), null, null,null);
                                                 break;
                                             }
-                                        }
+                                        }*/
                                     }
                                 }
                             });

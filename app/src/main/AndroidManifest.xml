@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.carryon.carryon">
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,23 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".SingleDelivery">
+        <activity android:name=".SingleOrder" />
+        <activity android:name=".SignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectCarrierActivity"/>
+        <activity android:name=".SelectCarrierActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeTabActivity" />
         <activity android:name=".NewPath" />
         <activity android:name=".PathInserted" />
-        <activity android:name=".SingleOrder" />
+        <activity android:name=".SingleDelivery" />
         <activity android:name=".NewDeliveryActivity" />
-        <activity android:name=".OrderPlaced"></activity>
+        <activity android:name=".OrderPlaced" />
+        <activity android:name=".QrCodeTvActivity"></activity>
     </application>
 
 </manifest>
