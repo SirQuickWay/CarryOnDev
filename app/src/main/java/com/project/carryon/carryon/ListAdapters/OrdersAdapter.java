@@ -32,12 +32,12 @@ public class OrdersAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<Delivery> deliveryList;
-    private User currentUser;
+    private String currentUserID;
 
-    public OrdersAdapter(Context mContext, List<Delivery> deliveryList, User currentUser) {
+    public OrdersAdapter(Context mContext, List<Delivery> deliveryList, String currentUser) {
         this.mContext = mContext;
         this.deliveryList = deliveryList;
-        this.currentUser = currentUser;
+        this.currentUserID = currentUser;
     }
 
     @Override
@@ -89,10 +89,10 @@ public class OrdersAdapter extends BaseAdapter {
                                                     receiver = document.toObject(User.class);
                                                 }
 
-                                                if(currentUser.getUserID().equals(sender.get(0).getUserID())) {
+                                                if(currentUserID.equals(sender.get(0).getUserID())) {
                                                     fromTo.setText("To " + receiver.getName());
                                                 }
-                                                else if(currentUser.getUserID().equals(receiver.getUserID())) {
+                                                else if(currentUserID.equals(receiver.getUserID())) {
                                                     fromTo.setText("From " + sender.get(0).getName());
                                                 }
                                             } else {

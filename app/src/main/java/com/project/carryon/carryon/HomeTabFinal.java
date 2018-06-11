@@ -17,13 +17,16 @@ public class HomeTabFinal extends AppCompatActivity {
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
 
+    private String currentUID;
     
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_final);
-        Log.d(TAG, "onCreate: Starting.");
+
+        Bundle b = new Bundle(getIntent().getExtras());
+        currentUID = b.getString("currentID");
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
@@ -41,7 +44,11 @@ public class HomeTabFinal extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Tab1Fragment(), "HOME");
+        Tab1Fragment tb = new Tab1Fragment();
+        Bundle b = new Bundle();
+        b.putString("currentUID", currentUID);
+        tb.setArguments(b);
+        adapter.addFragment(tb, "HOME");
         adapter.addFragment(new Tab2Fragment(), "ALL ORDERS");
         adapter.addFragment(new Tab3Fragment(), "ALL PATHS");
         viewPager.setAdapter(adapter);
