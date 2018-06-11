@@ -30,7 +30,7 @@ public class SingleDelivery extends AppCompatActivity {
 
 
     String deliveryID = "gnARkt77k7xeoPHaL49t"; //passata dalla homeActivityTab con l'intent
-    String currentID;
+    //String currentID; In realtà non serve!!!!
 
     User sender;    //HO SALVATO IN SENDER E RECEIVER I DUE USER: DA METTERE NELLE CARDVIEW
     User receiver;
@@ -45,6 +45,8 @@ public class SingleDelivery extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_delivery);
+
+        deliveryID = getIntent().getStringExtra("deliveryID");
 
         updateUI();
 

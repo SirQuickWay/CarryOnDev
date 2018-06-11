@@ -26,8 +26,8 @@ import android.os.Bundle;
 
 public class SingleOrder extends AppCompatActivity {
 
-    String deliveryID = "gnARkt77k7xeoPHaL49t"; //passata dalla homeActivityTab con l'intent
-    String currentID = "hm1RI2EReiXfkzPtHZa6hvVq57Q2";
+    String deliveryID = "m6CxMqhP0o7bqO67krvA"; //passata dalla homeActivityTab con l'intent
+    String currentID = "mxjJjdibLYYoIjhHG6WOVW9goej2";
 
     String QRCODE;
 
@@ -38,7 +38,8 @@ public class SingleOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_order);
 
-
+        deliveryID = getIntent().getStringExtra("deliveryID");
+        currentID = getIntent().getStringExtra("currentID");
 
         Button showQrCode = findViewById(R.id.show_QR_Code);
         showQrCode.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +138,7 @@ public class SingleOrder extends AppCompatActivity {
                                         {
                                             case 0 :
                                             {
-                                                sentence0_textView.setText(getText(R.string.carrier) +" " + carrierName +" " + getText(R.string.accepted));
+                                                sentence0_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.accepted));
                                                 Date creation = new Date(delivery.getCreationDate());
                                                 time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
 
@@ -150,11 +151,11 @@ public class SingleOrder extends AppCompatActivity {
                                             }
                                             case 1 :
                                             {
-                                                sentence0_textView.setText(getText(R.string.carrier) + carrierName + getText(R.string.accepted));
+                                                sentence0_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.accepted));
                                                 Date creation = new Date(delivery.getCreationDate());
                                                 time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
 
-                                                sentence1_textView.setText(getText(R.string.carrier) + carrierName + getText(R.string.got_package));
+                                                sentence1_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.got_package));
                                                 Date pickUp = new Date(delivery.getPickUpDate());
                                                 time1_textView.setText(String.format("%02d:%02d", pickUp.getHours(), pickUp.getMinutes()));
 
@@ -167,15 +168,15 @@ public class SingleOrder extends AppCompatActivity {
                                             }
                                             case 2 :
                                             {
-                                                sentence0_textView.setText(getText(R.string.carrier) + carrierName + getText(R.string.accepted));
+                                                sentence0_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.accepted));
                                                 Date creation = new Date(delivery.getCreationDate());
                                                 time0_textView.setText(String.format("%02d:%02d", creation.getHours(), creation.getMinutes()));
 
-                                                sentence1_textView.setText(getText(R.string.carrier) + carrierName + getText(R.string.got_package));
+                                                sentence1_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.got_package));
                                                 Date pickUp = new Date(delivery.getPickUpDate());
                                                 time1_textView.setText(String.format("%02d:%02d", pickUp.getHours(), pickUp.getMinutes()));
 
-                                                sentence2_textView.setText(getText(R.string.carrier) + carrierName + getText(R.string.delivered_package));
+                                                sentence2_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.delivered_package));
                                                 Date completion = new Date(delivery.getReceivedDate());
                                                 time2_textView.setText(String.format("%02d:%02d", completion.getHours(),completion.getMinutes()));
 

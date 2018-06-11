@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SingleOrder" />
-        <activity android:name=".SignupActivity">
+        <activity android:name=".NewDeliveryActivity" />
+        <activity android:name=".SingleOrder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         <activity android:name=".NewPath" />
         <activity android:name=".PathInserted" />
         <activity android:name=".SingleDelivery" />
-        <activity android:name=".NewDeliveryActivity" />
+        <activity android:name=".SignupActivity" />
         <activity android:name=".OrderPlaced" />
         <activity android:name=".QrCodeTvActivity"></activity>
     </application>

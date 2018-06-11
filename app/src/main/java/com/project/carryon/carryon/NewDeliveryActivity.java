@@ -51,8 +51,8 @@ public class NewDeliveryActivity extends AppCompatActivity {
     private int height = 0;
     private int width = 0;
     private int depth = 0;
-    private String currentUsername = "matteob51s"; //current user's username, gotten from authentication - messo come stringa per prova
-    private String senderID, receiverID, currentID; //TODO Da implementare il fatto di ricevere currentUsername e currentId dall'intent
+    private String currentUsername = "paloele"; //current user's username, gotten from authentication - messo come stringa per prova
+    private String senderID, receiverID, currentID = "mxjJjdibLYYoIjhHG6WOVW9goej2"; //TODO Da implementare il fatto di ricevere currentUsername e currentId dall'intent
     static Dialog d;
     private EditText senderEd;
     private EditText receiverEd;
