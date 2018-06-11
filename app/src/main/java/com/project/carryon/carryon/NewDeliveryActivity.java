@@ -150,11 +150,15 @@ public class NewDeliveryActivity extends AppCompatActivity {
         receiverEd.setFocusableInTouchMode(true);
         receiverEd.setCursorVisible(true);
         receiverEd.setTextColor(getColor(R.color.black));
-        onRadioButtonClicked(send_radioButton);
-        onRadioButtonClicked(receive_radioButton);
 
         senderUsername = currentUsername;
         receiverUsername = "";
+
+
+        onRadioButtonClicked(send_radioButton);
+        onRadioButtonClicked(receive_radioButton);
+
+
 
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override

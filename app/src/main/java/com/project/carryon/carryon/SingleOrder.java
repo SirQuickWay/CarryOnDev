@@ -26,8 +26,8 @@ import android.os.Bundle;
 
 public class SingleOrder extends AppCompatActivity {
 
-    String deliveryID = "m6CxMqhP0o7bqO67krvA"; //passata dalla homeActivityTab con l'intent
-    String currentID = "mxjJjdibLYYoIjhHG6WOVW9goej2";
+    String deliveryID = "gnARkt77k7xeoPHaL49t"; //passata dalla homeActivityTab con l'intent
+    String currentID = "hm1RI2EReiXfkzPtHZa6hvVq57Q2";
 
     String QRCODE;
 

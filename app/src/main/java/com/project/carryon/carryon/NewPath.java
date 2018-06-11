@@ -176,7 +176,7 @@ public class NewPath extends AppCompatActivity {
                             //String pathID = d.getId();
                             //public Path(String carrierID, double range, Means means, long departureDate, long estimatedTime, String departureAddressID, String arrivalAddressID)
                             long departureDate = new Date(mYear, mMonth, mDay, mHour, mMinute).getTime();
-                            long estimatedTime = estimHour*60+estimMinute*60*60;
+                            long estimatedTime = estimHour*60*60*1000+estimMinute*60*1000;
                             Path p = new Path(currentUserID,1000, m, departureDate, estimatedTime, sourAdd.getAddressID(), destAdd.getAddressID());
                             p.setPathID(newPath.getId());
                             newPath.set(p);

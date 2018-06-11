@@ -24,6 +24,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
 import com.project.carryon.carryon.GeneralClasses.User;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class SingleDelivery extends AppCompatActivity {
@@ -284,8 +285,14 @@ public class SingleDelivery extends AppCompatActivity {
                                     db.collection("deliveries").document(deliveryID).update("status", 1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
+                                            Date currentTime = Calendar.getInstance().getTime();
+                                            db.collection("deliveries").document(deliveryID).update("pickUpDate", currentTime.getTime()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    updateUI();
+                                                }
+                                            });
 
-                                            updateUI();
                                         }
                                     });
 
@@ -308,7 +315,13 @@ public class SingleDelivery extends AppCompatActivity {
                                     db.collection("deliveries").document(deliveryID).update("status", 2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            updateUI();
+                                            Date currentTime = Calendar.getInstance().getTime();
+                                            db.collection("deliveries").document(deliveryID).update("receivedDate", currentTime.getTime()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    updateUI();
+                                                }
+                                            });
                                         }
                                     });
 

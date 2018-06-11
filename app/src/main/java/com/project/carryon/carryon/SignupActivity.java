@@ -1,5 +1,6 @@
 package com.project.carryon.carryon;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.common.oob.SignUp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,8 +21,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.project.carryon.carryon.GeneralClasses.Address;
+import com.project.carryon.carryon.GeneralClasses.Means;
+import com.project.carryon.carryon.GeneralClasses.Path;
 import com.project.carryon.carryon.GeneralClasses.User;
+
+import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -95,12 +105,34 @@ public class SignupActivity extends AppCompatActivity {
     private void addUserOnDatabse()
     {
         //INSERIRE LA PARTE DELL'ADDRESS CON LA STRINGA mainAddress.
+        GetCoordinates addressGeo = new GetCoordinates();
 
-        User newUser = new User(name,surname,username,email,phoneNumber,"");
-        newUser.setUserID(mAuth.getUid());
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        try {
+            addressGeo.execute(mainAddress).get();
 
-        db.collection("users").document(mAuth.getUid()).set(newUser);
+            if (!addressGeo.isAddressFound())
+                Toast.makeText(getApplicationContext(), "Start address not found. Try again!", Toast.LENGTH_SHORT).show();
+            else {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Address sourAdd = new Address(addressGeo.getPIN(),addressGeo.getCountry(),addressGeo.getCity(),addressGeo.getAddress1(),Double.valueOf(addressGeo.getLng()),Double.valueOf(addressGeo.getLat()));
+
+                DocumentReference addrRef = db.collection("addresses").document();
+                sourAdd.setAddressID(addrRef.getId());
+                addrRef.set(sourAdd);
+                User newUser = new User(name,surname,username,email,phoneNumber,addrRef.getId());
+                newUser.setUserID(mAuth.getUid());
+
+
+                db.collection("users").document(mAuth.getUid()).set(newUser);
+
+                startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
     }
     private void signUpUserWithFirebase(String email, String password)
     {

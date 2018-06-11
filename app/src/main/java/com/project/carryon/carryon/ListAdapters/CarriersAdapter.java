@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -94,7 +95,7 @@ public class CarriersAdapter extends BaseAdapter {
                                                    Date pDate = new Date(pickUpTime);
                                                    long deliveryTime = pickUpTime + pathList.get(i).getEstimatedTime();
                                                    Date dDate = new Date(deliveryTime);
-
+                                                   Log.i("ds",String.valueOf(pickUpTime)+String.valueOf(deliveryTime));
                                                     pickUpTimeTextView.setText(String.valueOf(pDate.getYear())+"/"+String.valueOf(pDate.getMonth())+"/"+String.valueOf(pDate.getDate())+ " - "+String.valueOf(pDate.getHours())+ ":"+String.valueOf(pDate.getMinutes()));
                                                    deliveryTimeTextView.setText(String.valueOf(dDate.getYear())+"/"+String.valueOf(dDate.getMonth())+"/"+String.valueOf(dDate.getDate())+ " - "+String.valueOf(dDate.getHours())+ ":"+String.valueOf(dDate.getMinutes()));
 
