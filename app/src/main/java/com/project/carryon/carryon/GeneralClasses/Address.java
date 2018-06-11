@@ -18,6 +18,8 @@ public class Address {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+    public  Address()
+    {}
 
     public String getAddressID() {
         return addressID;

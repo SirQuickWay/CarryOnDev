@@ -27,11 +27,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.project.carryon.carryon.GeneralClasses.Address;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
 import com.project.carryon.carryon.GeneralClasses.User;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -59,7 +62,8 @@ public class NewDeliveryActivity extends AppCompatActivity {
     private RadioButton receive_radioButton;
     private Button doneButton;
     private String you;
-
+    private Address startingAddress;
+    private Address endingAddress;
     //parte dell'intent
 
     @Override
@@ -228,21 +232,88 @@ public class NewDeliveryActivity extends AppCompatActivity {
                                                                                             Toast.makeText(getApplicationContext(), "Please insert valid time and date", Toast.LENGTH_SHORT).show();
                                                                                         else {
                                                                                             Date d = new Date(deliveryYear, deliveryMonth, deliveryDay, deliveryHour, deliveryMinute);
-                                                                                            long deliveryDate = d.getTime();
+                                                                                            final long deliveryDate = d.getTime();
                                                                                             Date d2 = new Date(mYear, mMonth, mDay, mHour, mMinute);
-                                                                                            long creationDate = d2.getTime();
-                                                                                            Delivery delivery = new Delivery(null, senderID, receiverID, null, currentID, contents, (double) height, (double) width, (double) depth, (double) weight, 0, creationDate);
+                                                                                            final long creationDate = d2.getTime();
+                                                                                            final Delivery delivery = new Delivery(null, senderID, receiverID, null, currentID, contents, (double) height, (double) width, (double) depth, (double) weight, 0, creationDate);
 
-                                                                                            Intent i = new Intent(NewDeliveryActivity.this, SignupActivity.class);
 
-                                                                                            //convert the object to json-string:
-                                                                                            Gson gson = new Gson();
-                                                                                            String deliveryJson = gson.toJson(delivery);
-                                                                                            i.putExtra("deliveryJson", deliveryJson);
+                                                                                            //Get users(sender, receiver) main addresses
 
-                                                                                            i.putExtra("deliveryDate", deliveryDate); //deliveryDate passed separately as it is only needed to fetch carriers; the true date will be determined by Path
+                                                                                            db.collection("users")
+                                                                                                    .whereEqualTo("userID", senderID)
+                                                                                                    .get()
+                                                                                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                                        @Override
+                                                                                                        public void onComplete( Task<QuerySnapshot> task) {
 
-                                                                                            startActivity(i);
+                                                                                                            if (task.isSuccessful()) {
+                                                                                                                DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                                                                                                                String startingAddrID = document.get("mainAddressID").toString();
+
+                                                                                                                db.collection("addresses")
+                                                                                                                        .whereEqualTo("addressID", startingAddrID)
+                                                                                                                        .get()
+                                                                                                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                                                            @Override
+                                                                                                                            public void onComplete( Task<QuerySnapshot> task) {
+                                                                                                                                if (task.isSuccessful()) {
+                                                                                                                                    DocumentSnapshot document = task.getResult().getDocuments().get(0);
+
+                                                                                                                                    startingAddress = document.toObject(Address.class);
+                                                                                                                                    //look for destination address
+                                                                                                                                    db.collection("users")
+                                                                                                                                            .whereEqualTo("userID", receiverID)
+                                                                                                                                            .get()
+                                                                                                                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                                                                                @Override
+                                                                                                                                                public void onComplete( Task<QuerySnapshot> task) {
+                                                                                                                                                    if (task.isSuccessful()) {
+                                                                                                                                                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                                                                                                                                                        String endingAddrID = document.get("mainAddressID").toString();
+                                                                                                                                                        db.collection("addresses")
+                                                                                                                                                                .whereEqualTo("addressID", endingAddrID)
+                                                                                                                                                                .get()
+                                                                                                                                                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                                                                                                    @Override
+                                                                                                                                                                    public void onComplete( Task<QuerySnapshot> task) {
+                                                                                                                                                                        if (task.isSuccessful()) {
+                                                                                                                                                                            DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                                                                                                                                                                            endingAddress = document.toObject(Address.class);
+
+                                                                                                                                                                            //start new activity
+                                                                                                                                                                            Intent i = new Intent(NewDeliveryActivity.this, SelectCarrierActivity.class);
+
+                                                                                                                                                                            //convert the object to json-string:
+                                                                                                                                                                            Gson gson = new Gson();
+                                                                                                                                                                            String deliveryJson = gson.toJson(delivery);
+                                                                                                                                                                            i.putExtra("staringAddress", gson.toJson(startingAddress));
+                                                                                                                                                                            i.putExtra("endingAddress", gson.toJson(endingAddress));
+                                                                                                                                                                            i.putExtra("deliveryJson", deliveryJson);
+
+                                                                                                                                                                            i.putExtra("deliveryDate", deliveryDate); //deliveryDate passed separately as it is only needed to fetch carriers; the true date will be determined by Path
+
+                                                                                                                                                                            startActivity(i);
+
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                });
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            });
+
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        });
+                                                                                                            }
+                                                                                                        }
+                                                                                                    });
+
+
+
+
+
+
 
                                                                                         } //else - valid deliveryDate
 
@@ -273,6 +344,9 @@ public class NewDeliveryActivity extends AppCompatActivity {
                             }  //onComplete #1
 
                         }); //onCompleteListener #1
+
+
+
 
             }  //onClick
 

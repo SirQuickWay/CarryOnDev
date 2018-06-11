@@ -10,6 +10,7 @@ import android.os.Bundle;
 // IMPORTED STARTS
 import android.app.DatePickerDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
@@ -48,6 +49,7 @@ public class NewPath extends AppCompatActivity {
     private int mYear, mMonth, mDay, mHour, mMinute;
     //NUMBER PICKER DIALOG DECLARATIONS
     private TextView tvhour, tvminute;
+    private int estimHour, estimMinute;
     private RadioButton rdbRange;
     static Dialog d ;
     // GEOCODE DECLARATIONS
@@ -107,6 +109,7 @@ public class NewPath extends AppCompatActivity {
                 String depTime = depTimeTv.getText().toString();
                 String travelHour = travelHourTv.getText().toString();
                 String travelMinute = travelMinuteTv.getText().toString();
+
 
                 //General errors checks
                 if(depDate.equals(""))
@@ -172,8 +175,8 @@ public class NewPath extends AppCompatActivity {
                             }
                             //String pathID = d.getId();
                             //public Path(String carrierID, double range, Means means, long departureDate, long estimatedTime, String departureAddressID, String arrivalAddressID)
-                            long departureDate = new Date(mYear, mMonth, mDay).getTime();
-                            long estimatedTime = mMinute*60+mHour*60*60;
+                            long departureDate = new Date(mYear, mMonth, mDay, mHour, mMinute).getTime();
+                            long estimatedTime = estimHour*60+estimMinute*60*60;
                             Path p = new Path(currentUserID,1000, m, departureDate, estimatedTime, sourAdd.getAddressID(), destAdd.getAddressID());
                             p.setPathID(newPath.getId());
                             newPath.set(p);
@@ -280,6 +283,7 @@ public class NewPath extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tvhour.setText(String.format("%d h",np.getValue())); //set the value to textview
+                estimHour = np.getValue();
                 d.dismiss();
             }
         });
@@ -312,6 +316,7 @@ public class NewPath extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tvminute.setText(String.format("%d",np.getValue())); //set the value to textview
+                estimMinute = np.getValue();
                 d.dismiss();
             }
         });

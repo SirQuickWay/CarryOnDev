@@ -63,6 +63,7 @@ public class OrdersAdapter extends BaseAdapter {
         TextView deliveryDate = v.findViewById(R.id.textView_deliveryDate);
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
         de.hdodenhof.circleimageview.CircleImageView statusView = v.findViewById(R.id.circle_status);
         final User senderd, receiver;//retrieve from database
         db.collection("users")

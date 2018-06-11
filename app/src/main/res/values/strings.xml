@@ -74,4 +74,7 @@
     <string name="you_got_package">You got the package</string>
     <string name="you_delivered_package">You completed the delivery</string>
 
+    //SELECT CARRIER
+    <string name="title">Select your carrier</string>
+
 </resources>

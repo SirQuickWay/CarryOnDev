@@ -48,6 +48,7 @@ public class Delivery {
         this.pickUpDate = 0;
         this.receivedDate = 0;
     }
+    public Delivery(){}
 
     public String getDeliveryID() {
         return deliveryID;

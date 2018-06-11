@@ -22,6 +22,7 @@ public class Path {
         this.departureAddressID = departureAddressID;
         this.arrivalAddressID = arrivalAddressID;
     }
+    public Path(){}
 
     public String getPathID() {
         return pathID;
