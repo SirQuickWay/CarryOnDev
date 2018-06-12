@@ -38,21 +38,38 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String currentUID; //GET FROM AUTH
 
+    View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_home_tab,container,false);
+        view = inflater.inflate(R.layout.activity_home_tab,container,false);
+
+
+        // currentUser = new User("jjsk","Matteo","Demartis","b51s","b51s");
+        // User userProva  = new User("sjkdfs","Elena","Palombini","paloele","eelel");
+        // User userProva2 = new User("fj3rieo","Simone","Porcu","pork","dsadf");
+
+        //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));
+        //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,userProva2, currentUser, userProva, new Date(2018,5,20),new Date(2018,5,21),1));
+
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
         final List<Delivery> userDeliveries = new ArrayList<>(); //List for MyOrders
 
         final ListView list = (ListView)view.findViewById(R.id.listView_orders);
         final ListView list2 = (ListView)view.findViewById(R.id.listView_toCarry);
-
-
+        Button newPathButton = view.findViewById(R.id.button_newPath);
+        Button newOrderButton = view.findViewById(R.id.button_newOrder);
 
         currentUID = getArguments().getString("currentUID");
         deliveryList = new ArrayList<>();
 
-        Button newPathButton = view.findViewById(R.id.button_newPath);
+
         newPathButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +79,7 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
             }
         });
 
-        Button newOrderButton = view.findViewById(R.id.button_newOrder);
+
         newOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,15 +196,7 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
                 });
 
 
-        // currentUser = new User("jjsk","Matteo","Demartis","b51s","b51s");
-        // User userProva  = new User("sjkdfs","Elena","Palombini","paloele","eelel");
-        // User userProva2 = new User("fj3rieo","Simone","Porcu","pork","dsadf");
-
-        //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));
-        //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,userProva2, currentUser, userProva, new Date(2018,5,20),new Date(2018,5,21),1));
-
-
-        return view;
+        super.onResume();
     }
 
 }
