@@ -181,8 +181,9 @@ public class NewPath extends AppCompatActivity {
                             Path p = new Path(currentUserID,1000, m, departureDate, estimatedTime, sourAdd.getAddressID(), destAdd.getAddressID());
                             p.setPathID(newPath.getId());
                             newPath.set(p);
-
-                            startActivity(new Intent(NewPath.this, PathInserted.class));
+                            Intent i = new Intent(NewPath.this, PathInserted.class);
+                            i.putExtra("currentUID", currentUserID);
+                            startActivity(i);
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();

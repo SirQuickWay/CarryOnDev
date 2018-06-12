@@ -37,6 +37,7 @@ public class SelectCarrierActivity extends AppCompatActivity {
     private long deliveryDate;
     private List<Path> candidatePaths;
     CarriersAdapter adapter;
+    String currentUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class SelectCarrierActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_carrier);
         Bundle b = new Bundle(getIntent().getExtras());
         Gson gson = new Gson();
+        currentUID = getIntent().getExtras().getString("currentUID");
         newDelivery = gson.fromJson(b.getString("deliveryJson"), Delivery.class);
         deliveryDate = b.getLong("deliveryDate");
 
@@ -138,6 +140,7 @@ public class SelectCarrierActivity extends AppCompatActivity {
                                     newDelivery.setDeliveryID(newDeliveryReference.getId());
                                     newDeliveryReference.set(newDelivery);
                                     Intent newIntent = new Intent(SelectCarrierActivity.this, OrderPlaced.class);
+                                    newIntent.putExtra("currentUID", currentUID);
                                     startActivity(newIntent);
                                 }
                             });

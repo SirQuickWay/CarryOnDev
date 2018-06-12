@@ -45,7 +45,7 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home_tab,container,false);
 
-
+        currentUID = getArguments().getString("currentUID");
         // currentUser = new User("jjsk","Matteo","Demartis","b51s","b51s");
         // User userProva  = new User("sjkdfs","Elena","Palombini","paloele","eelel");
         // User userProva2 = new User("fj3rieo","Simone","Porcu","pork","dsadf");
@@ -66,7 +66,7 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
         Button newPathButton = view.findViewById(R.id.button_newPath);
         Button newOrderButton = view.findViewById(R.id.button_newOrder);
 
-        currentUID = getArguments().getString("currentUID");
+
         deliveryList = new ArrayList<>();
 
 

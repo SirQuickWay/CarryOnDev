@@ -53,7 +53,7 @@ public class NewDeliveryActivity extends AppCompatActivity {
     private int width = 0;
     private int depth = 0;
     private String currentUsername = "paloele"; //current user's username, gotten from authentication - messo come stringa per prova
-    private String senderID, receiverID, currentID = "mxjJjdibLYYoIjhHG6WOVW9goej2"; //TODO Da implementare il fatto di ricevere currentUsername e currentId dall'intent
+    private String senderID, receiverID, currentUID = "mxjJjdibLYYoIjhHG6WOVW9goej2"; //TODO Da implementare il fatto di ricevere currentUsername e currentId dall'intent
     static Dialog d;
     private EditText senderEd;
     private EditText receiverEd;
@@ -72,6 +72,7 @@ public class NewDeliveryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_delivery);
         currentUsername = getIntent().getExtras().getString("currentUsername");
+        currentUID = getIntent().getExtras().getString("currentUID");
         you = getString(R.string.you);
 
         //Localization of TextViews
@@ -242,7 +243,7 @@ public class NewDeliveryActivity extends AppCompatActivity {
                                                                                             final long deliveryDate = d.getTime();
                                                                                             Date d2 = new Date(mYear, mMonth, mDay, mHour, mMinute);
                                                                                             final long creationDate = d2.getTime();
-                                                                                            final Delivery delivery = new Delivery(null, senderID, receiverID, null, currentID, contents, (double) height, (double) width, (double) depth, (double) weight, 0, creationDate);
+                                                                                            final Delivery delivery = new Delivery(null, senderID, receiverID, null, currentUID, contents, (double) height, (double) width, (double) depth, (double) weight, 0, creationDate);
 
 
                                                                                             //Get users(sender, receiver) main addresses
@@ -300,6 +301,7 @@ public class NewDeliveryActivity extends AppCompatActivity {
 
                                                                                                                                                                             i.putExtra("deliveryDate", deliveryDate); //deliveryDate passed separately as it is only needed to fetch carriers; the true date will be determined by Path
 
+                                                                                                                                                                            i.putExtra("currentUID", currentUID);
                                                                                                                                                                             startActivity(i);
 
                                                                                                                                                                         }
