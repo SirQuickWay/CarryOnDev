@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,6 +71,7 @@ public class NewDeliveryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_delivery);
+        currentUsername = getIntent().getExtras().getString("currentUsername");
         you = getString(R.string.you);
 
         //Localization of TextViews
@@ -144,13 +146,14 @@ public class NewDeliveryActivity extends AppCompatActivity {
         senderEd.setFocusable(false);
         senderEd.setFocusableInTouchMode(false);
         senderEd.setCursorVisible(false);
-        senderEd.setTextColor(getColor(R.color.deliveredStatus));
+        senderEd.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.deliveredStatus));
+        //senderEd.setTextColor(getColor(R.color.deliveredStatus));
         receiverEd.setClickable(true);
         receiverEd.setFocusable(true);
         receiverEd.setFocusableInTouchMode(true);
         receiverEd.setCursorVisible(true);
-        receiverEd.setTextColor(getColor(R.color.black));
-
+        //receiverEd.setTextColor(getColor(R.color.black));
+        receiverEd.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
         senderUsername = currentUsername;
         receiverUsername = "";
 
@@ -375,14 +378,15 @@ public class NewDeliveryActivity extends AppCompatActivity {
                     senderEd.setFocusable(false);
                     senderEd.setFocusableInTouchMode(false);
                     senderEd.setCursorVisible(false);
-                    senderEd.setTextColor(getColor(R.color.deliveredStatus));
+                    //senderEd.setTextColor(getColor(R.color.deliveredStatus));
+                    senderEd.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.deliveredStatus));
                     receiverEd.setText("");
                     receiverEd.setClickable(true);
                     receiverEd.setFocusable(true);
                     receiverEd.setFocusableInTouchMode(true);
                     receiverEd.setCursorVisible(true);
-                    receiverEd.setTextColor(getColor(R.color.black));
-
+                    //receiverEd.setTextColor(getColor(R.color.black));
+                    receiverEd.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
                     senderUsername = currentUsername;
                     receiverUsername = "";
                 }
@@ -395,13 +399,15 @@ public class NewDeliveryActivity extends AppCompatActivity {
                     senderEd.setFocusable(true);
                     senderEd.setFocusableInTouchMode(true);
                     senderEd.setCursorVisible(true);
-                    senderEd.setTextColor(getColor(R.color.black));
+                    //senderEd.setTextColor(getColor(R.color.black));
+                    senderEd.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
                     receiverEd.setText(you);
                     receiverEd.setClickable(false);
                     receiverEd.setFocusable(false);
                     receiverEd.setFocusableInTouchMode(false);
                     receiverEd.setCursorVisible(false);
-                    receiverEd.setTextColor(getColor(R.color.deliveredStatus));
+                    //receiverEd.setTextColor(getColor(R.color.deliveredStatus));
+                    receiverEd.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.deliveredStatus));
 
                     receiverUsername = currentUsername;
                     senderUsername = "";

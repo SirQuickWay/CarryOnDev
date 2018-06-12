@@ -3,6 +3,7 @@ package com.project.carryon.carryon;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -43,12 +45,45 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
         final List<Delivery> userDeliveries = new ArrayList<>(); //List for MyOrders
 
         final ListView list = (ListView)view.findViewById(R.id.listView_orders);
-
-
         final ListView list2 = (ListView)view.findViewById(R.id.listView_toCarry);
+
+
 
         currentUID = getArguments().getString("currentUID");
         deliveryList = new ArrayList<>();
+
+        Button newPathButton = view.findViewById(R.id.button_newPath);
+        newPathButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), NewPath.class);
+                i.putExtra("currentUID", currentUID);
+                startActivity(i);
+            }
+        });
+
+        Button newOrderButton = view.findViewById(R.id.button_newOrder);
+        newOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                db.collection("users")
+                        .whereEqualTo("userID", currentUID)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                                User u = document.toObject(User.class);
+                                Intent i = new Intent(getContext(), NewDeliveryActivity.class);
+                                i.putExtra("currentUID", currentUID);
+                                i.putExtra("currentUsername", u.getUsername());
+                                startActivity(i);
+                            }
+                        });
+
+            }
+        });
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

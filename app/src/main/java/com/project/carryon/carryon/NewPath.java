@@ -62,6 +62,7 @@ public class NewPath extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_path);
+        currentUserID = getIntent().getExtras().getString("currentUID");
         dialog = new ProgressDialog(NewPath.this);
         // date and time picker dialog
         txtDate = (TextView) findViewById(R.id.in_date);

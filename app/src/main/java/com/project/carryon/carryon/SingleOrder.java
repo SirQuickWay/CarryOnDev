@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
 import com.project.carryon.carryon.GeneralClasses.Means;
+import com.project.carryon.carryon.GeneralClasses.Path;
 import com.project.carryon.carryon.GeneralClasses.User;
 
 import java.util.Date;
@@ -50,6 +51,20 @@ public class SingleOrder extends AppCompatActivity {
                 startActivity(newIntent);
             }
         });
+
+        updateUI();
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateUI();
+    }
+
+    private void updateUI()
+    {
         //localization of textViews
         final TextView sender_textView = findViewById(R.id.textView_sender);
         final TextView receiver_textView = findViewById(R.id.textView_receiver);
@@ -79,6 +94,8 @@ public class SingleOrder extends AppCompatActivity {
 
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
         db.collection("deliveries")
                 .whereEqualTo("deliveryID", deliveryID)
                 .get()
@@ -160,9 +177,12 @@ public class SingleOrder extends AppCompatActivity {
                                                 sentence1_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.got_package));
                                                 Date pickUp = new Date(delivery.getPickUpDate());
                                                 time1_textView.setText(String.format("%02d:%02d", pickUp.getHours(), pickUp.getMinutes()));
-
+                                                time1_textView.setVisibility(View.VISIBLE);
+                                                delete_if_status0.setVisibility(View.VISIBLE);
                                                 delete_if_status1.setVisibility(View.INVISIBLE);
+                                                state1_layout.setVisibility(View.VISIBLE);
                                                 state2_layout.setVisibility(View.INVISIBLE);
+
 
 
 
@@ -181,6 +201,16 @@ public class SingleOrder extends AppCompatActivity {
                                                 sentence2_textView.setText(getText(R.string.carrier) +" "+ carrierName +" "+ getText(R.string.delivered_package));
                                                 Date completion = new Date(delivery.getReceivedDate());
                                                 time2_textView.setText(String.format("%02d:%02d", completion.getHours(),completion.getMinutes()));
+
+                                                time0_textView.setVisibility(View.VISIBLE);
+
+                                                time1_textView.setVisibility(View.VISIBLE);
+                                                time2_textView.setVisibility(View.VISIBLE);
+                                                state1_layout.setVisibility(View.VISIBLE);
+                                                state2_layout.setVisibility(View.VISIBLE);
+
+                                                delete_if_status0.setVisibility(View.VISIBLE);
+                                                delete_if_status1.setVisibility(View.VISIBLE);
 
                                                 break;
                                             }
@@ -257,8 +287,5 @@ public class SingleOrder extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
     }
 }

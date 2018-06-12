@@ -2,6 +2,7 @@ package com.project.carryon.carryon.ListAdapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
+import com.project.carryon.carryon.GeneralClasses.Path;
 import com.project.carryon.carryon.GeneralClasses.User;
 import com.project.carryon.carryon.R;
 
@@ -59,8 +61,8 @@ public class OrdersAdapter extends BaseAdapter {
     public View getView(final int i, View view, ViewGroup viewGroup) {
         View v = View.inflate(mContext, R.layout.order_item, null);
         final TextView fromTo = v.findViewById(R.id.textView_fromTo);
-        TextView pickupDate = v.findViewById(R.id.textView_pickupDate);
-        TextView deliveryDate = v.findViewById(R.id.textView_deliveryDate);
+        final TextView pickupDate = v.findViewById(R.id.textView_pickupDate);
+        final TextView deliveryDate = v.findViewById(R.id.textView_deliveryDate);
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
@@ -106,10 +108,21 @@ public class OrdersAdapter extends BaseAdapter {
                     }
                 });
 
-        Date d =new Date(deliveryList.get(i).getPickUpDate());//change to path starting date
-        pickupDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
-        d = new Date(deliveryList.get(i).getReceivedDate());//change to path destination date
-        deliveryDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
+        db.collection("paths")
+                .whereEqualTo("pathID", deliveryList.get(i).getDeliveryPathID())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                        Path p = document.toObject(Path.class);
+                        Date d =new Date(p.getDepartureDate());//change to path starting date
+                        pickupDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
+                        d = new Date(p.getDepartureDate()+p.getEstimatedTime());//change to path destination date
+                        deliveryDate.setText(d.getDay() + "/" + d.getMonth() + "/" + d.getYear());
+
+                    }
+                });
         switch(deliveryList.get(i).getStatus())
         {
             case 0:
