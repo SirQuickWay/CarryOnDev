@@ -52,14 +52,13 @@
                     android:id="@+id/imageView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/pickup_icon"/>
+                    android:src="@drawable/send_icon" />
 
                 <TextView
                     android:id="@+id/textView_pickupDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="13dp"
                     android:layout_weight="1"
                     android:gravity="right"
@@ -77,8 +76,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/delivery_icon" />
+                    android:src="@drawable/receive_icon" />
 
                 <TextView
                     android:id="@+id/textView_deliveryDate"
