@@ -29,6 +29,7 @@
     <string name="time_travel">Estimated time of travel</string>
     <string name="transport">Main Transport</string>
     <string name="new_path">New Path</string>
+    <string name="new_order">New Order</string>
     <string name="add">Add</string>
     <string name="insert_here">Insert here</string>
     <string name="hours">hh :&#160;</string>
