@@ -74,6 +74,8 @@ public class SingleOrder extends AppCompatActivity {
 
         final Button button_call = findViewById(R.id.call_carrier);
         final Button button_text = findViewById(R.id.text_carrier);
+        final TextView deliveryID_textView = findViewById(R.id.editText_codeOrder);
+        deliveryID_textView.setText("#"+deliveryID.substring(0,6).toUpperCase());
 
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();

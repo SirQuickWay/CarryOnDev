@@ -93,7 +93,7 @@ public class HomeTabActivity extends AppCompatActivity {
         //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,currentUser, userProva, userProva2, new Date(2018,5,20),new Date(2018,5,21),0));
         //deliveryList.add(new Delivery("JEE23", "34x43x76", 13.4, 32,userProva2, currentUser, userProva, new Date(2018,5,20),new Date(2018,5,21),1));
 
-        OrdersAdapter adapter = new OrdersAdapter(getApplicationContext(), deliveryList, currentUser);
+        OrdersAdapter adapter = new OrdersAdapter(getApplicationContext(), deliveryList, currentUID);
         list.setAdapter(adapter);
         }
 

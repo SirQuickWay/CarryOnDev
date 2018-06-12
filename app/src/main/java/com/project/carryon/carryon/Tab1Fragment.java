@@ -1,5 +1,6 @@
 package com.project.carryon.carryon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.project.carryon.carryon.GeneralClasses.Delivery;
 import com.project.carryon.carryon.GeneralClasses.User;
 import com.project.carryon.carryon.ListAdapters.OrdersAdapter;
+import com.project.carryon.carryon.ListAdapters.ToCarryAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,7 @@ import java.util.List;
 
 public class Tab1Fragment extends android.support.v4.app.Fragment {
     List<Delivery> deliveryList;
+    List<Delivery> toCarryList;
     User currentUser;
     private static final String TAG = "HomeActivity";
 
@@ -37,10 +41,36 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home_tab,container,false);
         final List<Delivery> userDeliveries = new ArrayList<>(); //List for MyOrders
+
         final ListView list = (ListView)view.findViewById(R.id.listView_orders);
+
+
+        final ListView list2 = (ListView)view.findViewById(R.id.listView_toCarry);
 
         currentUID = getArguments().getString("currentUID");
         deliveryList = new ArrayList<>();
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String deliveryID = view.getTag().toString();
+                Intent newAct = new Intent(getContext(), SingleOrder.class);
+                newAct.putExtra("deliveryID", deliveryID);
+                newAct.putExtra("currentID", currentUID);
+                startActivity(newAct);
+            }
+        });
+
+        list2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String deliveryID = view.getTag().toString();
+                Intent newAct = new Intent(getContext(), SingleDelivery.class);
+                newAct.putExtra("deliveryID", deliveryID);
+                newAct.putExtra("currentID", currentUID);
+                startActivity(newAct);
+            }
+        });
         db.collection("deliveries")
                 .whereEqualTo("senderID",currentUID) //also add deliveries where current user is user2
                 //.whereGreaterThanOrEqualTo //-- time comparison within deliveries
@@ -88,6 +118,30 @@ public class Tab1Fragment extends android.support.v4.app.Fragment {
                 });
 
 
+        toCarryList = new ArrayList<>();
+        db.collection("deliveries")                   //this is to add deliveries where current user is user2
+                .whereEqualTo("carrierID",currentUID)
+                //.whereGreaterThanOrEqualTo -- time comparison within deliveries
+                //orderBy("time").limit(3); -- sample code for ordering deliveries (order by time)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete( Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Delivery delivery= document.toObject(Delivery.class);
+                                //Toast.makeText(getApplicationContext(), "delivery retrieved", Toast.LENGTH_SHORT ).show();
+                                toCarryList.add(delivery);
+                            }
+                            ToCarryAdapter deliveryAdapter = new ToCarryAdapter(getContext(), toCarryList, currentUID);
+
+                            list2.setAdapter(deliveryAdapter);
+                        } else {
+                            Log.d(TAG, "Error getting deliveries: ", task.getException());
+                        }
+                    }
+                });
 
 
         // currentUser = new User("jjsk","Matteo","Demartis","b51s","b51s");

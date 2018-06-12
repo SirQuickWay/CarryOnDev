@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                             String currentID = mAuth.getCurrentUser().getUid();
 
                             //pass the currentID to HomeTabActivity
-                            Intent i = new Intent(getApplicationContext(), HomeTabActivity.class);
+                            Intent i = new Intent(getApplicationContext(), HomeTabFinal.class);
                             i.putExtra("currentID", currentID);
                             startActivity(i);
 

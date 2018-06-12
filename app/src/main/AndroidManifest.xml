@@ -15,7 +15,7 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".SingleOrder"/>
         <activity android:name=".NewDeliveryActivity" />
-        <activity android:name=".HomeTabFinal">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,7 @@
         <activity android:name=".SelectCarrierActivity" />
         <activity android:name=".NewPath" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeTabFinal" />
         <activity android:name=".HomeTabActivity" />
         <activity android:name=".PathInserted" />
         <activity android:name=".SingleDelivery" />
