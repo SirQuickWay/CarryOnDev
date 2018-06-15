@@ -61,7 +61,9 @@ public class SingleDelivery extends AppCompatActivity {
         //QR code part
         qrScan = new IntentIntegrator(this);
         qrScan.setPrompt("Place a QR code inside the square to scan it.");
+
         qrScan.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        qrScan.setOrientationLocked(true);
         Button scan = findViewById(R.id.scan_QR_Code);
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
