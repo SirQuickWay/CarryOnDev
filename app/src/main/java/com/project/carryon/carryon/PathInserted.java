@@ -17,7 +17,7 @@ public class PathInserted extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(PathInserted.this, HomeTabActivity.class);
+                Intent myIntent = new Intent(PathInserted.this, HomeTabFinal.class);
                 myIntent.putExtra("currentUID", currentUID);
                 startActivity(myIntent);
             }

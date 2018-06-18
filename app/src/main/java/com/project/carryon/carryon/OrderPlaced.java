@@ -17,7 +17,7 @@ public class OrderPlaced extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(OrderPlaced.this, HomeActivity.class);
+                Intent myIntent = new Intent(OrderPlaced.this, HomeTabFinal.class);
                 myIntent.putExtra("currentUID", currentUID);
                 startActivity(myIntent);
             }

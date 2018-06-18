@@ -437,7 +437,7 @@ public class NewDeliveryActivity extends AppCompatActivity {
 
                         txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                         deliveryDay = dayOfMonth;
-                        deliveryMonth = monthOfYear;
+                        deliveryMonth = monthOfYear +1;
                         deliveryYear = year;
 
 

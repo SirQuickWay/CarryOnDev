@@ -177,6 +177,7 @@ public class NewPath extends AppCompatActivity {
                             //String pathID = d.getId();
                             //public Path(String carrierID, double range, Means means, long departureDate, long estimatedTime, String departureAddressID, String arrivalAddressID)
                             long departureDate = new Date(mYear, mMonth, mDay, mHour, mMinute).getTime();
+                            Log.i("Date", mYear + " " + mMonth +" " + mDay);
                             long estimatedTime = estimHour*60*60*1000+estimMinute*60*1000;
                             Path p = new Path(currentUserID,1000, m, departureDate, estimatedTime, sourAdd.getAddressID(), destAdd.getAddressID());
                             p.setPathID(newPath.getId());
@@ -273,6 +274,9 @@ public class NewPath extends AppCompatActivity {
                                           int monthOfYear, int dayOfMonth) {
 
                         txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        mYear = year;
+                        mMonth = monthOfYear +1 ;
+                        mDay = dayOfMonth;
 
                     }
                 }, mYear, mMonth, mDay);
@@ -294,6 +298,8 @@ public class NewPath extends AppCompatActivity {
                                           int minute) {
 
                         txtTime.setText(String.format("%02d:%02d", hourOfDay, minute));
+                        mHour = hourOfDay;
+                        mMinute = minute;
                     }
                 }, mHour, mMinute, true);
         timePickerDialog.show();

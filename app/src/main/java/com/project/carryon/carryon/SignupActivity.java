@@ -111,7 +111,7 @@ public class SignupActivity extends AppCompatActivity {
             addressGeo.execute(mainAddress).get();
 
             if (!addressGeo.isAddressFound())
-                Toast.makeText(getApplicationContext(), "Start address not found. Try again!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Main address not found. Try again!", Toast.LENGTH_SHORT).show();
             else {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 Address sourAdd = new Address(addressGeo.getPIN(),addressGeo.getCountry(),addressGeo.getCity(),addressGeo.getAddress1(),Double.valueOf(addressGeo.getLng()),Double.valueOf(addressGeo.getLat()));
