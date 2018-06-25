@@ -45,6 +45,10 @@
     <string name="receiver"><u>Receiver</u></string>
     <string name="carrier"><u>Carrier</u></string>
 
+    <string name="loading"><u>Loading...</u></string>
+    <string name="coming_soon"><u>Coming soon in the next version!</u></string>
+
+
 
     //NEW DELIVERY ACTIVITY
     <string name="new_delivery">New Delivery</string>

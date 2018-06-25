@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingTop="4dp"
-            android:text="#HWB739"
+            android:text="@string/loading"
             android:textAppearance="@android:style/TextAppearance.Material.Large"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="30sp" />
@@ -98,7 +98,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="Eric"
+            android:text="@string/loading"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
 
@@ -129,7 +129,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            android:text="Will"
+            android:text="@string/loading"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -180,7 +180,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_weight="0.25"
-            android:text="12:15"
+            android:text="00:00"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.082"
@@ -248,7 +248,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_weight="0.25"
-            android:text="14:20"
+            android:text="00:00"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.082"
@@ -307,7 +307,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_weight="0.25"
-            android:text="15:00"
+            android:text="00:00"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.082"
@@ -390,7 +390,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="4dp"
                         android:layout_weight="0.2"
-                        android:text="Jordan Belfort" />
+                        android:text="@string/loading" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -481,7 +481,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="4dp"
                         android:layout_weight="0.2"
-                        android:text="Jordan Belfort" />
+                        android:text="@string/loading" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

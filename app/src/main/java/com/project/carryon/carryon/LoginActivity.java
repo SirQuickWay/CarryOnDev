@@ -70,8 +70,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null)
-            Toast.makeText(LoginActivity.this, "User authenticated!",Toast.LENGTH_SHORT).show();
+        /*if(currentUser != null)
+            Toast.makeText(LoginActivity.this, "User authenticated!",Toast.LENGTH_SHORT).show();*/
 
     }
     private void loginButtonOnClick()

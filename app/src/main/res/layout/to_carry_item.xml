@@ -38,17 +38,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_weight="1"
-                android:text="TextView"
+                android:text="@string/loading"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                tools:text="From" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_weight="1"
-                android:text="To"
+                android:text="@string/loading"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>

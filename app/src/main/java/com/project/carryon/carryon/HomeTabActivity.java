@@ -4,6 +4,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -34,7 +36,7 @@ public class HomeTabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tab);
 
-        currentUID = getIntent().getStringExtra("currentID");
+        //currentUID = getIntent().getStringExtra("currentID");
 
         final List<Delivery> userDeliveries = new ArrayList<>(); //List for MyOrders
 
